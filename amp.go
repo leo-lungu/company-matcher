@@ -20,11 +20,11 @@ func amp() {
 	analytics = x
 }
 
-func track(userID string, eventType string, ep map[string]interface{}) {
-	analytics.Track({
-		UserID: "",
-		EventType: "",
-		EventProperties: ep
+func track(userID, eventType string, ep map[string]interface{}) {
+	analytics.Track(amplitude.Event{
+		UserID:          userID,
+		EventType:       eventType,
+		EventProperties: ep,
 	})
 }
 
