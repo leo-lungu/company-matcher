@@ -86,8 +86,6 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 			if company.Values[value] == true {
 				score++
 				score++
-				score++
-				score++
 			}
 		}
 
