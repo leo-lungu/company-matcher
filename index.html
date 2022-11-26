@@ -14,7 +14,7 @@
 			<nav>
 				<hgroup>
 					<img
-						src="logo2.jpeg"
+						src="./img/logo2.jpeg"
 						alt="2013 Toyota Tacoma"
 						id="itemImg"
 						style="width: 20em"
@@ -30,7 +30,7 @@
 			</nav>
 		</header>
 		<div class="track">
-			<img src="tower.jpg" />
+			<img src="./img/tower.jpg" />
 			<div class="play">
 				<a href="#container" class="companyscroll">
 					FIND WHAT COMPANY SUITS YOU
@@ -41,7 +41,7 @@
 			<br />
 			<br />
 			<br />
-			<form action="/result.html" method="POST">
+			<form action="/result" method="POST">
 				<div class="form-group">
 					<label for="name">Name</label>
 					<input
@@ -57,6 +57,7 @@
 						type="email"
 						class="form-control"
 						id="email"
+						name="email"
 						placeholder="name@example.com"
 					/>
 				</div>
@@ -66,7 +67,7 @@
 						multiple
 						class="form-control"
 						id="motivatedby"
-						name="motivations[]"
+						name="motivations"
 					>
 						<option value="diverse">Being in a diverse environment</option>
 						<option value="communities">Helping local communities</option>
