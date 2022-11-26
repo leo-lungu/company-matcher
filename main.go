@@ -15,8 +15,16 @@ type Company struct {
 	RetentionRate float64
 }
 
-type Results struct {
-	Email string
+type UserInputs struct {
+	Name                string
+	Email               string
+	Motivations         string
+	IdeasOrExpand       string
+	BigOrSmall          string
+	JobHopOrStay        string
+	MostImportantValues string
+	Location            string
+	JobTitle            string
 }
 
 const (
@@ -60,10 +68,26 @@ func getData() (data map[string]interface{}) {
 func resultHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
+	name := r.FormValue("name")
 	email := r.FormValue("email")
+	motivations := r.FormValue("motivations")
+	ideasOrExpand := r.FormValue("ideasOrExpand")
+	bigOrSmall := r.FormValue("bigOrSmall")
+	jobHopOrStay := r.FormValue("jobHopOrStay")
+	mostImportantValues := r.FormValue("mostImportantValues")
+	location := r.FormValue("location")
+	jobTitle := r.FormValue("jobTitle")
 
-	d := Results{
+	d := UserInputs{
+		name,
 		email,
+		motivations,
+		ideasOrExpand,
+		bigOrSmall,
+		jobHopOrStay,
+		mostImportantValues,
+		location,
+		jobTitle,
 	}
 
 	tmpl, err := template.ParseFiles("result.html")
