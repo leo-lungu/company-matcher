@@ -171,6 +171,11 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		jobTitle,
 	}
 
+	Track("ok", "ok", map[string]interface{}{
+		"name":       "Checkout",
+		"a property": "a value",
+	})
+
 	companyTest := getBestSuitedCompany(companies, d)
 
 	returnData := ReturnData{
@@ -195,11 +200,11 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	Amp()
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/result", resultHandler)
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./css"))))
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
 	log.Fatal(http.ListenAndServe(":8081", nil))
-	Amp()
 }
