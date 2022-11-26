@@ -149,7 +149,7 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	jobTitle := r.FormValue("jobTitle")
 
 	data := getData()
-
+	// sym
 	companies := []Company{}
 
 	for x := range data {
