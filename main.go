@@ -19,6 +19,10 @@ type Company struct {
 	Name string
 }
 
+const (
+	integrity = iota
+)
+
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("index.html")
 	if err != nil {
@@ -76,4 +80,5 @@ func main() {
 	// http.HandleFunc("/", indexHandler)
 	// log.Fatal(http.ListenAndServe(":8080", nil))
 
+	amp()
 }

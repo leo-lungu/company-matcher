@@ -13,107 +13,66 @@
     <br>
     <br>
     <div class="container">
-        <form action="">
-            <fieldset class="form-group">
-                <legend>Basic Info:</legend>
-                <div class="form-group">
-                    <label class="form-control-label" for="">First Name:</label>
-                    <input class="form-control" type="text" name="FirstName" placeholder="Enter Your First Name">
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="">Last Name:</label class="form-control-label">
-                    <input class="form-control" type="text" name="LastName" placeholder="Enter Your Last Name">
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <legend>Contact Info:</legend>
-                <div class="form-group">
-                    <label class="form-control-label" for="">Email:</label class="form-control-label">
-                    <input class="form-control" type="email" name="email" id="">
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="">Phone:</label>
-                    <input class="form-control"class="form-control" type="tel" name="Phone" id="">
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <legend>Address:</legend>
-                <div class="form-group">
-                    <label class="form-control-label" for="">Country</label class="form-control-label">
-                    <select class="form-control" name="Country" id="">
-                        <option value="selected">Bangladesh</option>
-                        <option value="">India</option>
-                        <option value="">Australia</option>
-                        <option value="">Pakistan</option>
-                        <option value="">Nepal</option>
-                        <option value="">China</option>
-                        <option value="">America</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="">Proper Area:</label>
-                    <textarea class="form-control" name="Area" id="" cols="" rows="5"></textarea>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <legend>Other Info:</legend>
-                <div class="form-group">
-                    <label class="form-check-label" for="">Select Your Gender:</label>
-                    <div class="form-check">
-                        <label class="form-check-label" for="">
-                            <input type="radio" name="gender" value="male">Male
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label" for="">
-                            <input type="radio" name="gender" value="female">Female
-                        </label>
-                    </div>
-                </div>
-                <fieldset class="form-group">
-                    <div class="form-group">
-                        <legend>
-                            Check Your Desired Career:
-                        </legend>
-                    <div class="form-check">
-                        <label class="form-check-label" for="">
-                            <input type="checkbox">Web Designer
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label" for="">
-                            <input type="checkbox">Web Developer
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label" for="">
-                            <input type="checkbox">Graphics Designer
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label" for="">
-                            <input type="checkbox">SEO Expert
-                        </label>
-                    </div>
-                    </div>
-                </fieldset>
-            </fieldset>
-            <fieldset class="form-group">
-                <legend>Upload Your Photo:</legend>
-                <div class="form-group">
-                    <input class="form-control-file" type="file" name="" id="">
-                </div>
-            </fieldset>
-            <button class="btn btn-primary">Submit</button>
-        </form>
+        <form action="http://webprojects.eecs.qmul.ac.uk/un300/week4/week4_process.php" method="POST">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+              <label for="motivatedby">What are you motivated by?</label>
+              <select multiple class="form-control" id="motivatedby" name="motivations[]">
+                <option>Being in a diverse environment</option>
+                <option>Helping local communities</option>
+                <option>Assisting customers and clients</option>
+                <option>Working in large teams</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ideasexpand">Do you work with current ideas or like to expand?</label>
+              <select class="form-control" id="ideasexpand" name="ideasOrExpand">
+                <option>Current ideas</option>
+                <option>Like to expand</option>
+              </select>
+            </div>
+			<div class="form-group">
+				<label for="bigsmall">Do you prefer to work in a big or small company environnment?</label>
+				<select class="form-control" id="bigsmall" name="bigOrSmall">
+				  <option>Big</option>
+				  <option>Small</option>
+				  <option>No Preference</option>
+				</select>
+			  </div>
+			  <div class="form-group">
+				<label for="jobhop">Do you like to stay at a company longer or job-hop?</label>
+				<select class="form-control" id="jobhop" name="jobHopOrStay">
+				  <option>Stay for Longer</option>
+				  <option>Job Hop</option>
+				  <option>No Preference</option>
+				</select>
+			  </div>
+			  <div class="form-group">
+				<label for="values">What values are most important to you?</label>
+				<select multiple class="form-control" id="values" name="mostImportantValues[]">
+				  <option>Taking Ownership</option>
+				  <option>Taking Leadership</option>
+				  <option>Helping Others</option>
+				  <option>Being Ethical</option>
+				</select>
+			  </div>
+            <div class="form-group">
+              <label for="location">What is your location?</label>
+              <textarea class="form-control" id="location" rows="1" name="location"></textarea>
+            </div>
+			<div class="form-group">
+				<label for="jobtitle">What is your job title?</label>
+				<textarea class="form-control" id="jobtitle" rows="1" name="jobTitle"></textarea>
+			  </div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+          </form>
     </div>
     <br>
     <br>
     <br>
-
-
-
-
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
