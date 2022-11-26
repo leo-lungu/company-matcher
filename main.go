@@ -138,7 +138,7 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 
-	CompanyTest = getBestSuitedCompany(companies, d)
+	CompanyTest := getBestSuitedCompany(companies, d)
 
 	tmpl, err := template.ParseFiles("result.html")
 	if err != nil {
