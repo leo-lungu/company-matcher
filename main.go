@@ -32,6 +32,15 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, r)
 }
 
+func resultsHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("results.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tmpl.Execute(w, r)
+}
+
 func handleErr(err error) {
 	if err != nil {
 		log.Fatalln(err)
