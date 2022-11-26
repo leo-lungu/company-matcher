@@ -18,11 +18,11 @@ type Company struct {
 type UserInputs struct {
 	Name                string
 	Email               string
-	Motivations         string
+	Motivations         []string
 	IdeasOrExpand       string
 	BigOrSmall          string
 	JobHopOrStay        string
-	MostImportantValues string
+	MostImportantValues []string
 	Location            string
 	JobTitle            string
 }
@@ -70,11 +70,11 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 
 	name := r.FormValue("name")
 	email := r.FormValue("email")
-	motivations := r.FormValue("motivations")
 	ideasOrExpand := r.FormValue("ideasOrExpand")
+	motivations := r.Form["motivations"]
 	bigOrSmall := r.FormValue("bigOrSmall")
 	jobHopOrStay := r.FormValue("jobHopOrStay")
-	mostImportantValues := r.FormValue("mostImportantValues")
+	mostImportantValues := r.Form["mostImportantValues"]
 	location := r.FormValue("location")
 	jobTitle := r.FormValue("jobTitle")
 
