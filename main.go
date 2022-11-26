@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -29,6 +28,15 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, r)
 }
 
+func resultsHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("results.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tmpl.Execute(w, r)
+}
+
 func handleErr(err error) {
 	if err != nil {
 		log.Fatalln(err)
@@ -43,15 +51,6 @@ func getData() (data map[string]interface{}) {
 	handleErr(err)
 
 	return data
-}
-
-func resultHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("result.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	tmpl.Execute(w, r)
 }
 
 func main() {
@@ -69,12 +68,11 @@ func main() {
 		})
 	}
 
-	for i := range companies {
-		fmt.Println(companies[i])
-	}
+	//for i := range companies {
+	//	fmt.Println(companies[i])
+	//}
 
 	http.HandleFunc("/", indexHandler)
-	http.HandleFunc("/result", resultHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
 	// amp()
