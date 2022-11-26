@@ -182,7 +182,7 @@ func main() {
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
 	log.Fatal(http.ListenAndServe(":8081", nil))
-	// amp()
+	amp()
 =======
 	log.Fatal(http.ListenAndServe(":8080", nil))
 >>>>>>> Stashed changes
