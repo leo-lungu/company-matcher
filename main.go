@@ -51,8 +51,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl.Execute(w, r)
-
-	amp()
 }
 
 func resultsHandler(w http.ResponseWriter, r *http.Request) {
@@ -203,5 +201,5 @@ func main() {
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
 	log.Fatal(http.ListenAndServe(":8081", nil))
-	amp()
+	matcher.Amp()
 }
