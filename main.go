@@ -17,6 +17,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	log.Println("Listening on :5500")
 	http.HandleFunc("/", indexHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":5500", nil))
 }
