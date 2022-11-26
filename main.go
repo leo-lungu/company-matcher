@@ -27,6 +27,19 @@ type UserInputs struct {
 	JobTitle            string
 }
 
+type ReturnData struct {
+	Name                string
+	Email               string
+	Motivations         []string
+	IdeasOrExpand       string
+	BigOrSmall          string
+	JobHopOrStay        string
+	MostImportantValues []string
+	Location            string
+	JobTitle            string
+	CompanyTest         Company
+}
+
 const (
 	integrity = iota
 )
@@ -111,18 +124,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	location := r.FormValue("location")
 	jobTitle := r.FormValue("jobTitle")
 
-	d := UserInputs{
-		name,
-		email,
-		motivations,
-		ideasOrExpand,
-		bigOrSmall,
-		jobHopOrStay,
-		mostImportantValues,
-		location,
-		jobTitle,
-	}
-
 	data := getData()
 
 	companies := []Company{}
@@ -136,14 +137,39 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 
-	CompanyTest := getBestSuitedCompany(companies, d)
+	d := UserInputs{
+		name,
+		email,
+		motivations,
+		ideasOrExpand,
+		bigOrSmall,
+		jobHopOrStay,
+		mostImportantValues,
+		location,
+		jobTitle,
+	}
+
+	companyTest := getBestSuitedCompany(companies, d)
+
+	returnData := ReturnData{
+		name,
+		email,
+		motivations,
+		ideasOrExpand,
+		bigOrSmall,
+		jobHopOrStay,
+		mostImportantValues,
+		location,
+		jobTitle,
+		companyTest,
+	}
 
 	tmpl, err := template.ParseFiles("result.html")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	tmpl.Execute(w, d)
+	tmpl.Execute(w, returnData)
 }
 
 func main() {
