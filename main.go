@@ -52,7 +52,7 @@ func main() {
 
 	data := getData()
 
-	companies := make([]Company, 0, 1)
+	companies := []Company{}
 
 	for x := range data {
 		companies = append(companies, Company{
