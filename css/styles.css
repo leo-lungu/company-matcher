@@ -99,3 +99,20 @@ html {
     margin-top: 100%;
     padding-bottom: 25%;
    } 
+
+
+   .track img {
+    width: 100%;
+  }
+  
+  .track .play {
+    position: absolute;
+    top: calc((85% / 2) - (22px / 2)); /* Half image height minus half button height */
+    left: calc((100% / 2) - (50% / 2)); /* Half image width minus half button width */
+  }
+
+.companyscroll {
+    font-size: 50px;
+    background-color: white;
+    padding: 0.5em;
+}

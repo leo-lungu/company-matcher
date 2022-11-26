@@ -75,5 +75,5 @@ func main() {
 	http.HandleFunc("/", indexHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
-	// amp()
+	amp()
 }

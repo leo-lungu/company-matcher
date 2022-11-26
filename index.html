@@ -7,7 +7,7 @@
     <title>Bootstrap Practice</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/reset.css">
+	  <link rel="stylesheet" href="css/reset.css">
 </head>
 <body>
 	<header class="top">
@@ -24,11 +24,13 @@
             </ul>
         </nav>
     </header>
-	<a href="#container">Click Here to Smoothly Scroll Down</a>
-	<img src="handshake.jpeg" alt="2013 Toyota Tacoma" id="itemImg" style="width: 100%">
-    <br>
-    <br>
-    <br>
+    <div class="track">
+      <img src="tower.jpg">
+      <div class="play">
+        <a href="#container"class="companyscroll">FIND WHAT COMPANY SUITS YOU</a>
+      </div>
+    </div>
+  
     <div class="container", id="container">
         <form action="/result.html" method="POST">
 			<div class="form-group">
@@ -50,6 +52,7 @@
             <div class="form-group">
               <label for="ideasexpand">Do you work with current ideas or like to expand?</label>
               <select class="form-control" id="ideasexpand" name="ideasOrExpand">
+                <option value="select">Select</option>
                 <option value="current">Current ideas</option>
                 <option value="expand">Like to expand</option>
               </select>
@@ -57,6 +60,7 @@
 			<div class="form-group">
 				<label for="bigsmall">Do you prefer to work in a big or small company environnment?</label>
 				<select class="form-control" id="bigsmall" name="bigOrSmall">
+          <option value="select">Select</option>
 				  <option value="big">Big</option>
 				  <option value="small">Small</option>
 				  <option value="nopref">No Preference</option>
@@ -65,6 +69,7 @@
 			  <div class="form-group">
 				<label for="jobhop">Do you like to stay at a company longer or job-hop?</label>
 				<select class="form-control" id="jobhop" name="jobHopOrStay">
+          <option value="select">Select</option>
 				  <option value="longer">Stay for Longer</option>
 				  <option value="jobhop">Job Hop</option>
 				  <option value="nopref">No Preference</option>
