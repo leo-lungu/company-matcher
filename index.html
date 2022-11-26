@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Bootstrap Practice</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/styles.css" />
-		<link rel="stylesheet" href="css/reset.css" />
-	</head>
-	<body>
-		<header class="top">
-			<nav>
-				<hgroup>
-					<img
-						src="./img/logo2.jpeg"
-						alt="2013 Toyota Tacoma"
-						id="itemImg"
-						style="width: 20em"
-					/>
-				</hgroup>
-				<ul>
-					<li class="Match Me"><a href="experience.php">Experience</a></li>
-					<li class="Companies"><a href="skills.php">Skills</a></li>
-					<div class="login-right">
-						<li class="login"><a href="login.html">Login</a></li>
-					</div>
-				</ul>
-			</nav>
-		</header>
-		<div class="track">
-			<img src="./img/tower.jpg" />
-			<div class="play">
-				<a href="#container" class="companyscroll">
-					FIND WHAT COMPANY SUITS YOU
-				</a>
-			</div>
-		</div>
-		<div class="container" , id="container">
-			<br />
-			<br />
-			<br />
-			<form action="/result" method="POST">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Company Matcher - by Coman.py</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    
+</head>
+<body>
+    <div id="loading">
+        <div id="spinner"></div>
+    </div>
+    <div id="magnify">
+        <h1 onclick="closemagnify()"><i class="fas fa-times"></i></h1>
+        <div id="../img/tower.png"></div>
+    </div>
+    <header id="header" class="animated slideInDown" style="animation-delay:1.8s;">
+        <table>
+            <tr>
+                <img src="../img/logo2.jpeg" style="width: 20%">
+                <td id="navigation">
+                    <a href="#companies">companies</a>
+                    <a href="algorith">algorithm</a>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <table id="top_part">
+        <tr>
+            <td id="about" class="animated slideInLeft" style="animation-delay:2s;">
+                <h1>Helping you find the suitable company for you</h1>
+                <a href="#findit"><button href="#findit" class="btn_one">What Company</button></a>
+            </td>
+            <td id="rightImage" class="animated jackInTheBox" style="animation-delay:2.2s;"></td>
+        </tr>
+    </table>
+    <div id="companies">
+        <h1>companies</h1>
+        <div id="businesses">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Amplitude_logo.svg">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Tesco_Logo.svg/2560px-Tesco_Logo.svg.png">
+            <img src="https://cdn.mos.cms.futurecdn.net/rjqJEKv6P9Yjy9d3KMGvp8.jpg">
+            <img src="https://janestreet.com/assets/logo_horizontal.png">
+            <img src="https://blogs.microsoft.com/wp-content/uploads/prod/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg">
+            <img src="https://cdn.mos.cms.futurecdn.net/BQwukuZwwwXrg27B9Le2Q6.png">
+        </div>
+    </div>
+    <div id="algorithm">
+        <h1>algorithm</h1>
+        <p>
+            The Company Matcher app by Coman.py provides a starting point for you to discover your dream company, by easily finding and comparing the institutions that interest you. 
+        </p>
+        <p>
+            We use multiple indicators, including what companies have the same values as you, the size of the companies, and how their working style works compared to what you prefer. We then take this data and manipulate it in such a way that our results are 99.99% correct, and then will present you with job listings from the companies which match you the most, so that the AI does all the work for you.
+        </p>
+        <p>
+            Complete the form below to start.
+        </p>
+    </div>
+    <div id="findit">
+            <form action="/result" method="POST">
 				<div class="form-group">
 					<label for="name">Name</label>
 					<input
@@ -63,62 +86,62 @@
 					/>
 				</div>
 				<div class="form-group">
-					<label for="motivatedby">What are you motivated by?</label>
+					<label for="motivatedby">What are you motivated by?</label><br>
 					<select
 						multiple
 						class="form-control"
 						id="motivatedby"
 						name="motivations"
 					>
-						<option value="Diversity">Being in a diverse environment</option>
-						<option value="Community">Helping local communities</option>
-						<option value="Customer Obsession">Assisting customers and clients</option>
+						<option value="diverse">Being in a diverse environment</option>
+						<option value="communities">Helping local communities</option>
+						<option value="customers">Assisting customers and clients</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="ideasexpand">
 						Do you work with current ideas or like to expand?
-					</label>
+					</label><br>
 					<select class="form-control" id="ideasexpand" name="ideasOrExpand">
 						<option value="select">Select</option>
-						<option value="Ideas">Current ideas</option>
-						<option value="Expand">Like to expand</option>
+						<option value="current">Current ideas</option>
+						<option value="expand">Like to expand</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="bigsmall">
 						Do you prefer to work in a big or small company environnment?
-					</label>
+					</label><br>
 					<select class="form-control" id="bigsmall" name="bigOrSmall">
 						<option value="select">Select</option>
-						<option value="Big">Big</option>
-						<option value="Small">Small</option>
+						<option value="big">Big</option>
+						<option value="small">Small</option>
 						<option value="nopref">No Preference</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="jobhop">
 						Do you like to stay at a company longer or job-hop?
-					</label>
+					</label><br>
 					<select class="form-control" id="jobhop" name="jobHopOrStay">
 						<option value="select">Select</option>
-						<option value="Stay">Stay for Longer</option>
-						<option value="JobHop">Job Hop</option>
+						<option value="longer">Stay for Longer</option>
+						<option value="jobhop">Job Hop</option>
 						<option value="nopref">No Preference</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="values">What values are most important to you?</label>
+					<label for="values">What values are most important to you?</label><br>
 					<select
 						multiple
 						class="form-control"
 						id="values"
 						name="mostImportantValues"
 					>
-						<option value="Customer Obsession">Customer Interaction</option>
-						<option value="Leadership">Leadership</option>
-						<option value="Teamwork">Teamwork</option>
-						<option value="Integrity">Integrity</option>
+						<option value="ownership">Taking Ownership</option>
+						<option value="leadership">Taking Leadership</option>
+						<option value="others">Helping Others</option>
+						<option value="ethical">Being Ethical</option>
 					</select>
 				</div>
 				<div class="form-group">
@@ -141,13 +164,16 @@
 						value="jobTitle"
 					></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+                <div id="wrapper">
+                    <button type="submit" class="btn_one">Submit</button>
+                </div>
 			</form>
 		</div>
-		<br />
-		<br />
-		<br />
-		<script src="js/jquery-3.3.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-	</body>
+    <div id="footer">
+        A coman.py product<br>Company Matcher</a>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/index.js" type="text/javascript"></script>
+</body>
 </html>
