@@ -13,14 +13,14 @@
     <br>
     <br>
     <div class="container">
-        <form>
+        <form action="http://webprojects.eecs.qmul.ac.uk/un300/week4/week4_process.php" method="POST">
             <div class="form-group">
               <label for="exampleFormControlInput1">Email address</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
             </div>
             <div class="form-group">
               <label for="motivatedby">What are you motivated by?</label>
-              <select multiple class="form-control" id="motivatedby">
+              <select multiple class="form-control" id="motivatedby" name="motivations[]">
                 <option>Being in a diverse environment</option>
                 <option>Helping local communities</option>
                 <option>Assisting customers and clients</option>
@@ -29,22 +29,22 @@
             </div>
             <div class="form-group">
               <label for="ideasexpand">Do you work with current ideas or like to expand?</label>
-              <select class="form-control" id="ideasexpand">
+              <select class="form-control" id="ideasexpand" name="ideasOrExpand">
                 <option>Current ideas</option>
                 <option>Like to expand</option>
               </select>
             </div>
 			<div class="form-group">
 				<label for="bigsmall">Do you prefer to work in a big or small company environnment?</label>
-				<select class="form-control" id="bigsmall">
+				<select class="form-control" id="bigsmall" name="bigOrSmall">
 				  <option>Big</option>
 				  <option>Small</option>
 				  <option>No Preference</option>
 				</select>
 			  </div>
 			  <div class="form-group">
-				<label for="exampleFormControlSelect2">Do you like to stay at a company longer or job-hop?</label>
-				<select class="form-control" id="exampleFormControlSelect2">
+				<label for="jobhop">Do you like to stay at a company longer or job-hop?</label>
+				<select class="form-control" id="jobhop" name="jobHopOrStay">
 				  <option>Stay for Longer</option>
 				  <option>Job Hop</option>
 				  <option>No Preference</option>
@@ -52,7 +52,7 @@
 			  </div>
 			  <div class="form-group">
 				<label for="values">What values are most important to you?</label>
-				<select multiple class="form-control" id="values">
+				<select multiple class="form-control" id="values" name="mostImportantValues[]">
 				  <option>Taking Ownership</option>
 				  <option>Taking Leadership</option>
 				  <option>Helping Others</option>
@@ -61,13 +61,13 @@
 			  </div>
             <div class="form-group">
               <label for="location">What is your location?</label>
-              <textarea class="form-control" id="location" rows="1"></textarea>
+              <textarea class="form-control" id="location" rows="1" name="location"></textarea>
             </div>
 			<div class="form-group">
 				<label for="jobtitle">What is your job title?</label>
-				<textarea class="form-control" id="jobtitle" rows="1"></textarea>
+				<textarea class="form-control" id="jobtitle" rows="1" name="jobTitle"></textarea>
 			  </div>
-			<button class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </div>
     <br>
