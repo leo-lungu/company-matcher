@@ -1,0 +1,8 @@
+div, nav, aside, html, figure, footer, body, img, ul, li, a, h1, h2, h3, p, body, header, hgroup, marquee, hr article, section, h4, h5, table, td, th, tr {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-size: 100%;
+    list-style-type: none;
+    vertical-align: baseline;
+}
