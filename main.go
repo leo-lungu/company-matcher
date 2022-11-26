@@ -77,5 +77,5 @@ func main() {
 	http.HandleFunc("/result", resultHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
-	// amp()
+	amp()
 }
