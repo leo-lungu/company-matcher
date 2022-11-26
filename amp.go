@@ -5,6 +5,10 @@ import (
 	"github.com/amplitude/analytics-go/amplitude"
 )
 
+type c struct {
+	Name string
+}
+
 // amp func
 func amp() {
 	analytics := amplitude.NewClient(
@@ -18,4 +22,11 @@ func amp() {
 	})
 
 	print(analytics)
+}
+
+func trial() {
+	cc := []c{}
+	cc = append(cc, c{
+		Name: "asdas",
+	})
 }
