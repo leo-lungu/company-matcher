@@ -86,45 +86,60 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 		score := 0
 
 		for _, value := range userInputs.Motivations {
-			if company.Values[value] == true {
-				score++
+			if company.Values[value] != nil {
+				score += 1
+				log.Println("Success: ", value, " ", company.Name, "Score: ", score)
 			}
 		}
 
 		if userInputs.IdeasOrExpand == "Expand" {
 			if company.Values["Innovative"] == true {
 				score++
+				log.Println("innovative", company.Name, company.Values["Innovative"])
+				log.Println("score", score)
 			}
 		}
 
 		if userInputs.BigOrSmall == "Big" {
 			if company.CompanySize > 88000 {
+				log.Println("big", company.Name, company.CompanySize)
+				log.Println("score", score)
 				score++
 			}
 		} else if userInputs.BigOrSmall == "Small" {
 			if company.CompanySize < 88000 {
+				log.Println("small", company.Name, company.CompanySize)
+				log.Println("score", score)
 				score++
 			}
 		}
 
 		if userInputs.JobHopOrStay == "JobHop" {
 			if company.RetentionRate < 50 {
+				log.Println("jobhop", company.Name, company.RetentionRate)
+				log.Println("score", score)
 				score++
 			}
 		} else if userInputs.JobHopOrStay == "Stay" {
 			if company.RetentionRate > 50 {
+				log.Println("stay", company.Name, company.RetentionRate)
+				log.Println("score", score)
 				score++
 			}
 		}
 
 		for _, value := range userInputs.MostImportantValues {
 			if company.Values[value] == true {
+				log.Print("most important matched", value, "\n", company.Name, company.Values[value])
+				log.Println("score", score)
 				score++
 				score++
 			}
 		}
 
 		if score > bestScore {
+			log.Println("Previous best score", bestScore)
+			log.Println("New best score", score)
 			bestCompany = company
 			bestScore = score
 		}
@@ -201,5 +216,5 @@ func main() {
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
 	log.Fatal(http.ListenAndServe(":8081", nil))
-	Amp()
+	//amp()
 }

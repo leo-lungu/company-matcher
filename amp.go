@@ -12,7 +12,7 @@ type c struct {
 var analytics amplitude.Client
 
 // amp func
-func Amp() {
+func amp() {
 	config := amplitude.NewConfig("ac610d38b345c833f241e1dc353c3691")
 	config.FlushQueueSize = 200
 	x := amplitude.NewClient(config)
