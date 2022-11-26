@@ -85,6 +85,22 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 	for _, company := range companies {
 		score := 0
 
+		if userInputs.IdeasOrExpand == "Expand" {
+			if company.Values["Innovative"] == true {
+				score++
+			}
+		}
+
+		if userInputs.BigOrSmall == "Big" {
+			if company.CompanySize > 88000 {
+				score++
+			}
+		} else if userInputs.BigOrSmall == "Small" {
+			if company.CompanySize < 88000 {
+				score++
+			}
+		}
+
 		if userInputs.JobHopOrStay == "JobHop" {
 			if company.RetentionRate < 50 {
 				score++
