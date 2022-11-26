@@ -6,6 +6,10 @@ import (
 	"text/template"
 )
 
+const (
+	integrity = iota
+)
+
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("index.html")
 	if err != nil {
