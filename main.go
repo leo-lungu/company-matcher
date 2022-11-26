@@ -1,15 +1,22 @@
 package main
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"text/template"
 )
 
+// type Company struct {
+// 	Name          string
+// 	Values        map[string]string
+// 	CompanySize   int
+// 	RetentionRate int
+// }
+
 type Company struct {
-	Name  string `json:"Name"`
-	Value map[string]string
+	Name string
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -24,15 +31,49 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 func resultsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
-func main() {
-	readFile, err := os.ReadFile("scraped.json")
+func handleErr(err error) {
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalln(err)
+	}
+}
+
+func getData() (data map[string]interface{}) {
+	readFile, err := ioutil.ReadFile("scraped.json")
+	handleErr(err)
+
+	err = json.Unmarshal(readFile, &data)
+	handleErr(err)
+
+	return data
+}
+
+func main() {
+
+	data := getData()
+
+	// var companyData []Company
+
+	for key, _ := range data {
+		// fmt.Println(data[key])
+		for _, value := range val.(map[string]interface{}) {
+
+			// fmt.Println(data[key])
+			// 	companyData = append(companyData, Company{
+			// 		Name: value["Name"].(string),
+			// 	})
+		}
 	}
 
-	strBody := string(readFile)
+	// for i := 0; i < len(strBody); i++ {
+	// companyData = append(companyData, Company{
+	// 	Name: string(strBody[i].Name),
+	// 	Value: string(strBody[i].Value),
+	// })
+	// }
 
-	http.HandleFunc("/", indexHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	// fmt.Println(strBody)
+
+	// http.HandleFunc("/", indexHandler)
+	// log.Fatal(http.ListenAndServe(":8080", nil))
 
 }

@@ -1,198 +1,198 @@
 {
-    "1": {
-        "Name": "Amazon",
-        "Values": {
-            "1": "Customer Obsession",
-            "2": "Ownership",
-            "3": "Innovation",
-            "4": "Curious",
-            "5": "High Quality",
-            "6": "Think Big",
-            "7": "Frugality",
-            "8": "Trust",
-            "9": "Communication",
-            "10": "Deliver Results",
-            "11": "Responsibility",
-            "12": "Sustainability"
-        },
-        "CompanySize": 1468000,
-        "RetentionRate": 82
-    },
-    "2": {
-        "Name": "Google",
-        "Values": {
-            "1": "Customer Focus",
-            "2": "Innovation",
-            "3": "Bold",
-            "4": "Collaboration",
-            "5": "Openness",
-            "6": "Trust",
-            "7": "Integrity"
-        },
-        "CompanySize": 156500,
-        "RetentionRate": 81
-    },
-    "3": {
-        "Name": "Microsoft",
-        "Values": {
-            "1": "Customer Obsession",
-            "2": "Integrity",
-            "3": "Respect",
-            "4": "Innovation",
-            "5": "Teamwork",
-            "6": "Passion",
-            "7": "Diversity",
-            "8": "Trust",
-            "9": "Accountability"
-        },
-        "CompanySize": 221000,
-        "RetentionRate": 76
-    },
-    "4": {
-        "Name": "Facebook",
-        "Values": {
-            "1": "Move Fast",
-            "2": "Bold",
-            "3": "Openness",
-            "4": "Responsibility",
-            "5": "Community",
-            "6": "Inclusion"
-        },
-        "CompanySize": 71970,
-        "RetentionRate": 69
-    },
-    "5": {
-        "Name": "Apple",
-        "Values": {
-            "1": "Think Different",
-            "2": "Innovation",
-            "3": "Integrity",
-            "4": "Openness",
-            "5": "Respect",
-            "6": "Teamwork",
-            "7": "Passion",
-            "8": "Diversity",
-            "9": "Trust",
-            "10": "Accountability",
-            "11": "Sustainability"
-        },
-        "CompanySize": 110000,
-        "RetentionRate": 53
-    },
-    "6": {
-        "Name": "Tesla",
-        "Values": {
-            "1": "Customer Focus",
-            "2": "Sustainability",
-            "3": "Innovation",
-            "4": "Teamwork",
-            "5": "Community",
-            "6": "Diversity",
-            "7": "Respect",
-            "8": "Constant Learning",
-            "9": "Risk Taking"
-        },
-        "CompanySize": "",
-        "RetentionRate": 68
-    },
-    "7": {
-        "Name": "Netflix",
-        "Values": {
-            "1": "Judgement",
-            "2": "Selflessness",
-            "3": "Courage",
-            "4": "Leadership",
-            "5": "Communication",
-            "6": "Inclusion",
-            "7": "Diversity",
-            "8": "Passion",
-            "9": "Integrity",
-            "10": "Curiosity",
-            "11": "Honesty"
-        },
-        "CompanySize": 11300,
-        "RetentionRate": 83
-    },
-    "8": {
-        "Name": "Airbnb",
-        "Values": {
-            "1": "Belonging",
-            "2": "Community",
-            "3": "Hospitality",
-            "4": "Trust",
-            "5": "Openness",
-            "6": "Innovation",
-            "7": "Passion",
-            "8": "Adventure"
-        },
-        "CompanySize": 6132,
-        "RetentionRate": 73
-    },
-    "9": {
-        "Name": "Snapchat",
-        "Values": {
-            "1": "Customer Focus",
-            "2": "Innovation",
-            "3": "Passion",
-            "4": "Integrity",
-            "5": "Diversity",
-            "6": "Vigor"
-        },
-        "CompanySize": 5661,
-        "RetentionRate": 75
-    },
-    "10": { 
-        "Name": "Jane Street",
-        "Values": {
-            "1": "Ethical",
-            "2": "Honesty",
-            "3": "Integrity",
-            "4": "Trust",
-            "5": "Responsiblity",
-            "6": "Humility",
-            "7": "Collaboration"
-        },
-        "CompanySize": 1700,
-        "RetentionRate": 95
-    },
-    "11": {
-        "Name": "Tesco",
-        "Values": {
-            "1": "Customer Obsession",
-            "2": "Responsibility",
-            "3": "Community",
-            "4": "Teamwork",
-            "5": "Respect",
-            "6": "Trust",
-            "7": "Sustainability",
-            "8": "Integrity"
-        },
-        "CompanySize": 367321,
-        "RetentionRate": 71
-    },
-    "12": {
-        "Name": "Boots",
-        "Values": {
-            "1": "Customer Obsession",
-            "2": "Courageous",
-            "3": "Connected",
-            "4": "Committed",
-            "5": "Curious"
-        },
-        "CompanySize": 56000,
-        "RetentionRate": 67
-    },
-    "13": {
-        "Name": "Amplitude",
-        "Values": {
-            "1": "Humility",
-            "2": "Ownership",
-            "3": "Growth Mindset",
-            "4": "Leadership",
-            "5": "Inclusion",
-            "6": "Passion"
-        },
-        "CompanySize": 500,
-        "RetentionRate": 87
-    }
+	"1": {
+		"Name": "Amazon",
+		"Values": {
+			"1": "Customer Obsession",
+			"2": "Ownership",
+			"3": "Innovation",
+			"4": "Curious",
+			"5": "High Quality",
+			"6": "Think Big",
+			"7": "Frugality",
+			"8": "Trust",
+			"9": "Communication",
+			"10": "Deliver Results",
+			"11": "Responsibility",
+			"12": "Sustainability"
+		},
+		"CompanySize": 1468000,
+		"RetentionRate": 82
+	},
+	"2": {
+		"Name": "Google",
+		"Values": {
+			"1": "Customer Focus",
+			"2": "Innovation",
+			"3": "Bold",
+			"4": "Collaboration",
+			"5": "Openness",
+			"6": "Trust",
+			"7": "Integrity"
+		},
+		"CompanySize": 156500,
+		"RetentionRate": 81
+	},
+	"3": {
+		"Name": "Microsoft",
+		"Values": {
+			"1": "Customer Obsession",
+			"2": "Integrity",
+			"3": "Respect",
+			"4": "Innovation",
+			"5": "Teamwork",
+			"6": "Passion",
+			"7": "Diversity",
+			"8": "Trust",
+			"9": "Accountability"
+		},
+		"CompanySize": 221000,
+		"RetentionRate": 76
+	},
+	"4": {
+		"Name": "Facebook",
+		"Values": {
+			"1": "Move Fast",
+			"2": "Bold",
+			"3": "Openness",
+			"4": "Responsibility",
+			"5": "Community",
+			"6": "Inclusion"
+		},
+		"CompanySize": 71970,
+		"RetentionRate": 69
+	},
+	"5": {
+		"Name": "Apple",
+		"Values": {
+			"1": "Think Different",
+			"2": "Innovation",
+			"3": "Integrity",
+			"4": "Openness",
+			"5": "Respect",
+			"6": "Teamwork",
+			"7": "Passion",
+			"8": "Diversity",
+			"9": "Trust",
+			"10": "Accountability",
+			"11": "Sustainability"
+		},
+		"CompanySize": 110000,
+		"RetentionRate": 53
+	},
+	"6": {
+		"Name": "Tesla",
+		"Values": {
+			"1": "Customer Focus",
+			"2": "Sustainability",
+			"3": "Innovation",
+			"4": "Teamwork",
+			"5": "Community",
+			"6": "Diversity",
+			"7": "Respect",
+			"8": "Constant Learning",
+			"9": "Risk Taking"
+		},
+		"CompanySize": 1234,
+		"RetentionRate": 68
+	},
+	"7": {
+		"Name": "Netflix",
+		"Values": {
+			"1": "Judgement",
+			"2": "Selflessness",
+			"3": "Courage",
+			"4": "Leadership",
+			"5": "Communication",
+			"6": "Inclusion",
+			"7": "Diversity",
+			"8": "Passion",
+			"9": "Integrity",
+			"10": "Curiosity",
+			"11": "Honesty"
+		},
+		"CompanySize": 11300,
+		"RetentionRate": 83
+	},
+	"8": {
+		"Name": "Airbnb",
+		"Values": {
+			"1": "Belonging",
+			"2": "Community",
+			"3": "Hospitality",
+			"4": "Trust",
+			"5": "Openness",
+			"6": "Innovation",
+			"7": "Passion",
+			"8": "Adventure"
+		},
+		"CompanySize": 6132,
+		"RetentionRate": 73
+	},
+	"9": {
+		"Name": "Snapchat",
+		"Values": {
+			"1": "Customer Focus",
+			"2": "Innovation",
+			"3": "Passion",
+			"4": "Integrity",
+			"5": "Diversity",
+			"6": "Vigor"
+		},
+		"CompanySize": 5661,
+		"RetentionRate": 75
+	},
+	"10": {
+		"Name": "Jane Street",
+		"Values": {
+			"1": "Ethical",
+			"2": "Honesty",
+			"3": "Integrity",
+			"4": "Trust",
+			"5": "Responsiblity",
+			"6": "Humility",
+			"7": "Collaboration"
+		},
+		"CompanySize": 1700,
+		"RetentionRate": 95
+	},
+	"11": {
+		"Name": "Tesco",
+		"Values": {
+			"1": "Customer Obsession",
+			"2": "Responsibility",
+			"3": "Community",
+			"4": "Teamwork",
+			"5": "Respect",
+			"6": "Trust",
+			"7": "Sustainability",
+			"8": "Integrity"
+		},
+		"CompanySize": 367321,
+		"RetentionRate": 71
+	},
+	"12": {
+		"Name": "Boots",
+		"Values": {
+			"1": "Customer Obsession",
+			"2": "Courageous",
+			"3": "Connected",
+			"4": "Committed",
+			"5": "Curious"
+		},
+		"CompanySize": 56000,
+		"RetentionRate": 67
+	},
+	"13": {
+		"Name": "Amplitude",
+		"Values": {
+			"1": "Humility",
+			"2": "Ownership",
+			"3": "Growth Mindset",
+			"4": "Leadership",
+			"5": "Inclusion",
+			"6": "Passion"
+		},
+		"CompanySize": 500,
+		"RetentionRate": 87
+	}
 }
