@@ -30,6 +30,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func resultsHandler(w http.ResponseWriter, r *http.Request) {
+	// r := r.FormValue("")
 }
 
 func handleErr(err error) {
@@ -65,10 +66,10 @@ func main() {
 
 	for i := range companies {
 		fmt.Println(companies[i])
-
 	}
 
 	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/result", indexHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
 	// amp()
