@@ -87,6 +87,12 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 	for _, company := range companies {
 		score := 0
 
+		for _, value := range userInputs.Motivations {
+			if company.Values[value] == true {
+				score++
+			}
+		}
+
 		if userInputs.IdeasOrExpand == "Expand" {
 			if company.Values["Innovative"] == true {
 				score++
