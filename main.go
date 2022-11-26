@@ -65,6 +65,41 @@ func getData() (data map[string]interface{}) {
 	return data
 }
 
+func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompany Company) {
+	bestCompany = companies[0]
+	bestScore := 0
+
+	for _, company := range companies {
+		score := 0
+
+		if userInputs.JobHopOrStay == "JobHop" {
+			if company.RetentionRate < 50 {
+				score++
+			}
+		} else if userInputs.JobHopOrStay == "Stay" {
+			if company.RetentionRate > 50 {
+				score++
+			}
+		}
+
+		for _, value := range userInputs.MostImportantValues {
+			if company.Values[value] == true {
+				score++
+				score++
+				score++
+				score++
+			}
+		}
+
+		if score > bestScore {
+			bestCompany = company
+			bestScore = score
+		}
+	}
+
+	return bestCompany
+}
+
 func resultHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
@@ -90,16 +125,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		jobTitle,
 	}
 
-	tmpl, err := template.ParseFiles("result.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	tmpl.Execute(w, d)
-}
-
-func main() {
-
 	data := getData()
 
 	companies := []Company{}
@@ -113,11 +138,22 @@ func main() {
 		})
 	}
 
+	CompanyTest = getBestSuitedCompany(companies, d)
+
+	tmpl, err := template.ParseFiles("result.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tmpl.Execute(w, d)
+}
+
+func main() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/result", resultHandler)
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./css"))))
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8081", nil))
 	// amp()
 }
