@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -16,7 +17,7 @@ import (
 // }
 
 type Company struct {
-	Name string
+	Name string `json:"name"`
 }
 
 const (
@@ -41,41 +42,42 @@ func handleErr(err error) {
 	}
 }
 
-func getData() (data map[string]interface{}) {
+func getData() map[string]interface{} {
 	readFile, err := ioutil.ReadFile("scraped.json")
+	// println(readFile)
 	handleErr(err)
 
-	err = json.Unmarshal(readFile, &data)
+	var dat map[string]interface{}
+
+	_ = json.Unmarshal([]byte(readFile), &dat)
+	// fmt.Println(dat)
+	// for x := range dat {
+	// 	fmt.Println(dat[x].(map[string]interface{})["Name"])
+	// }
 	handleErr(err)
 
-	return data
+	// for key := range item {
+	// 	fmt.Println(item[key].Name)
+	// }
+
+	return dat
 }
 
 func main() {
 
-	data := getData()
+	items := getData()
 
-	// var companyData []Company
+	itemss := make([]Company, 0, 1)
 
-	for key, _ := range data {
-		// fmt.Println(data[key])
-		for _, value := range val.(map[string]interface{}) {
-
-			// fmt.Println(data[key])
-			// 	companyData = append(companyData, Company{
-			// 		Name: value["Name"].(string),
-			// 	})
-		}
+	for x := range items {
+		itemss = append(itemss, Company{
+			Name: items[x].(map[string]interface{})["Name"].(string),
+		})
 	}
 
-	// for i := 0; i < len(strBody); i++ {
-	// companyData = append(companyData, Company{
-	// 	Name: string(strBody[i].Name),
-	// 	Value: string(strBody[i].Value),
-	// })
-	// }
-
-	// fmt.Println(strBody)
+	for i := range itemss {
+		fmt.Println(itemss[i].Name)
+	}
 
 	// http.HandleFunc("/", indexHandler)
 	// log.Fatal(http.ListenAndServe(":8080", nil))
