@@ -29,10 +29,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, r)
 }
 
-func resultsHandler(w http.ResponseWriter, r *http.Request) {
-	// r := r.FormValue("")
-}
-
 func handleErr(err error) {
 	if err != nil {
 		log.Fatalln(err)
@@ -47,6 +43,15 @@ func getData() (data map[string]interface{}) {
 	handleErr(err)
 
 	return data
+}
+
+func resultHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("result.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tmpl.Execute(w, r)
 }
 
 func main() {
@@ -69,7 +74,7 @@ func main() {
 	}
 
 	http.HandleFunc("/", indexHandler)
-	http.HandleFunc("/result", indexHandler)
+	http.HandleFunc("/result", resultHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
 	// amp()
