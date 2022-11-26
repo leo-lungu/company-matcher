@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
-	"matcher"
 	"net/http"
 	"text/template"
 )
