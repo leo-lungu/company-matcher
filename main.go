@@ -9,15 +9,11 @@ import (
 	"text/template"
 )
 
-// type Company struct {
-// 	Name          string
-// 	Values        map[string]string
-// 	CompanySize   int
-// 	RetentionRate int
-// }
-
 type Company struct {
-	Name string `json:"name"`
+	Name          string
+	Values        map[string]interface{}
+	CompanySize   float64
+	RetentionRate float64
 }
 
 const (
@@ -42,45 +38,38 @@ func handleErr(err error) {
 	}
 }
 
-func getData() map[string]interface{} {
+func getData() (data map[string]interface{}) {
 	readFile, err := ioutil.ReadFile("scraped.json")
-	// println(readFile)
 	handleErr(err)
 
-	var dat map[string]interface{}
-
-	_ = json.Unmarshal([]byte(readFile), &dat)
-	// fmt.Println(dat)
-	// for x := range dat {
-	// 	fmt.Println(dat[x].(map[string]interface{})["Name"])
-	// }
+	err = json.Unmarshal([]byte(readFile), &data)
 	handleErr(err)
 
-	// for key := range item {
-	// 	fmt.Println(item[key].Name)
-	// }
-
-	return dat
+	return data
 }
 
 func main() {
 
-	items := getData()
+	data := getData()
 
-	itemss := make([]Company, 0, 1)
+	companies := make([]Company, 0, 1)
 
-	for x := range items {
-		itemss = append(itemss, Company{
-			Name: items[x].(map[string]interface{})["Name"].(string),
+	for x := range data {
+		companies = append(companies, Company{
+			Name:          data[x].(map[string]interface{})["Name"].(string),
+			Values:        data[x].(map[string]interface{})["Values"].(map[string]interface{}),
+			CompanySize:   data[x].(map[string]interface{})["CompanySize"].(float64),
+			RetentionRate: data[x].(map[string]interface{})["RetentionRate"].(float64),
 		})
 	}
 
-	for i := range itemss {
-		fmt.Println(itemss[i].Name)
+	for i := range companies {
+		fmt.Println(companies[i])
+
 	}
 
-	// http.HandleFunc("/", indexHandler)
-	// log.Fatal(http.ListenAndServe(":8080", nil))
+	http.HandleFunc("/", indexHandler)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 
-	amp()
+	// amp()
 }
