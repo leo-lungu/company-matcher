@@ -1,34 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
-	<body>
-		<form action="/results" method="post">
-			<p>What are you motivated by?</p>
-			<br />
-			<input type="radio" name="motivation" value="diverse_environment" />
-			<label for="diverse_environment">Being in a diverse environment</label>
-			<br />
-			<input type="radio" name="motivation" value="" />
-			<label for="helping">Helping local communities</label>
-			<br />
-			<br />
-			<input type="radio" name="motivation" value="diverse_environment" />
-			<label for="diverse_environment">Being in a diverse environment</label>
-			<br />
-			<input type="radio" name="motivation" value="" />
-			<label for="helping">Helping local communities</label>
-			<br />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bootstrap Practice</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <form action="">
+            <fieldset class="form-group">
+                <legend>Basic Info:</legend>
+                <div class="form-group">
+                    <label class="form-control-label" for="">First Name:</label>
+                    <input class="form-control" type="text" name="FirstName" placeholder="Enter Your First Name">
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="">Last Name:</label class="form-control-label">
+                    <input class="form-control" type="text" name="LastName" placeholder="Enter Your Last Name">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <legend>Contact Info:</legend>
+                <div class="form-group">
+                    <label class="form-control-label" for="">Email:</label class="form-control-label">
+                    <input class="form-control" type="email" name="email" id="">
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="">Phone:</label>
+                    <input class="form-control"class="form-control" type="tel" name="Phone" id="">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <legend>Address:</legend>
+                <div class="form-group">
+                    <label class="form-control-label" for="">Country</label class="form-control-label">
+                    <select class="form-control" name="Country" id="">
+                        <option value="selected">Bangladesh</option>
+                        <option value="">India</option>
+                        <option value="">Australia</option>
+                        <option value="">Pakistan</option>
+                        <option value="">Nepal</option>
+                        <option value="">China</option>
+                        <option value="">America</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Proper Area:</label>
+                    <textarea class="form-control" name="Area" id="" cols="" rows="5"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <legend>Other Info:</legend>
+                <div class="form-group">
+                    <label class="form-check-label" for="">Select Your Gender:</label>
+                    <div class="form-check">
+                        <label class="form-check-label" for="">
+                            <input type="radio" name="gender" value="male">Male
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="">
+                            <input type="radio" name="gender" value="female">Female
+                        </label>
+                    </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        <legend>
+                            Check Your Desired Career:
+                        </legend>
+                    <div class="form-check">
+                        <label class="form-check-label" for="">
+                            <input type="checkbox">Web Designer
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="">
+                            <input type="checkbox">Web Developer
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="">
+                            <input type="checkbox">Graphics Designer
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="">
+                            <input type="checkbox">SEO Expert
+                        </label>
+                    </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+            <fieldset class="form-group">
+                <legend>Upload Your Photo:</legend>
+                <div class="form-group">
+                    <input class="form-control-file" type="file" name="" id="">
+                </div>
+            </fieldset>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
 
-			<p>Do you work with current ideas or like to expand?</p>
 
-			<p>Do you prefer to work in a big or small company environment?</p>
 
-			<p>Do you like to stay at a company longer or job-hop?</p>
-		</form>
-	</body>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
 </html>
