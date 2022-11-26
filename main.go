@@ -65,7 +65,6 @@ func main() {
 
 	for i := range companies {
 		fmt.Println(companies[i])
-
 	}
 
 	http.HandleFunc("/", indexHandler)
