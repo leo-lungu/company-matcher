@@ -12,7 +12,7 @@ type c struct {
 var analytics amplitude.Client
 
 // amp func
-func amp() {
+func Amp() {
 	config := amplitude.NewConfig("ac610d38b345c833f241e1dc353c3691")
 	config.FlushQueueSize = 200
 	x := amplitude.NewClient(config)
@@ -20,7 +20,7 @@ func amp() {
 	analytics = x
 }
 
-func track(userID, eventType string, ep map[string]interface{}) {
+func Track(userID, eventType string, ep map[string]interface{}) {
 	analytics.Track(amplitude.Event{
 		UserID:          userID,
 		EventType:       eventType,
@@ -28,7 +28,7 @@ func track(userID, eventType string, ep map[string]interface{}) {
 	})
 }
 
-func trial() {
+func Trial() {
 	cc := []c{}
 	cc = append(cc, c{
 		Name: "asdas",
