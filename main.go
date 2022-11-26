@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -14,6 +13,10 @@ type Company struct {
 	Values        map[string]interface{}
 	CompanySize   float64
 	RetentionRate float64
+}
+
+type Results struct {
+	Email string
 }
 
 const (
@@ -46,12 +49,20 @@ func getData() (data map[string]interface{}) {
 }
 
 func resultHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+
+	email := r.FormValue("email")
+
+	d := Results{
+		email,
+	}
+
 	tmpl, err := template.ParseFiles("result.html")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	tmpl.Execute(w, r)
+	tmpl.Execute(w, d)
 }
 
 func main() {
@@ -69,13 +80,10 @@ func main() {
 		})
 	}
 
-	for i := range companies {
-		fmt.Println(companies[i])
-	}
-
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/result", resultHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
-
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./css"))))
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
+	log.Fatal(http.ListenAndServe(":8000", nil))
 	// amp()
 }
