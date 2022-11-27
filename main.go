@@ -4,8 +4,11 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
+	"strconv"
 	"text/template"
+	"time"
 )
 
 type Company struct {
@@ -186,11 +189,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		jobTitle,
 	}
 
-	Track("ok", "ok", map[string]interface{}{
-		"name":       "Checkout",
-		"a property": "a value",
-	})
-
 	companyTest := getBestSuitedCompany(companies, d)
 
 	returnData := ReturnData{
@@ -205,6 +203,16 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		jobTitle,
 		companyTest,
 	}
+
+	s1 := rand.NewSource(time.Now().UnixNano())
+	r1 := rand.New(s1)
+	id := strconv.Itoa(r1.Intn(100))
+	print(id)
+	// Track("user-"+id, "assessment", &d, &returnData)
+	// NEED TO CHANGE BELOW
+	// FIXES THE UI NOT UPDATING BY SENDING ANOTHER REQUEST TO THE USER
+	// NEED TO EITHER SPLIT THE IDENTIFY PART AND EVENT PART OR CALL THE METHOD TWICE
+	Track("user-70", "assessment", &d, &returnData)
 
 	tmpl, err := template.ParseFiles("result.html")
 	if err != nil {
@@ -222,8 +230,5 @@ func main() {
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
 	log.Fatal(http.ListenAndServe(":8081", nil))
-<<<<<<< HEAD
 	//amp()
-=======
->>>>>>> a2125538709df0afd05bf5dbfda22ab742a5ef71
 }
