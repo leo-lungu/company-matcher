@@ -31,12 +31,12 @@
 			<table id="top_part">
 				<tr>
 					<td id="about" class="animated slideInLeft" style="animation-delay:3.8s;">
-						<br><br><br>
+						<div style="padding-bottom: 5%"></div>
 						<h1>Your Top Match: {{ .CompanyTest.Name }}</h1>
 						<p>Facts about the company:</h1>
 						<p>{{ .CompanyTest.Name }}'s values: </h1>
 						{{ range $values := .CompanyTest.Values }}
-							<ul>
+							<ul style="padding: 0; margin: 0;">
 								<li>{{$values}}</li>
 							</ul>
 						{{end}}

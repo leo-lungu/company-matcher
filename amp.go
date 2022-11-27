@@ -2,8 +2,6 @@ package main
 
 // Import amplitude package
 import (
-	"time"
-
 	"github.com/amplitude/analytics-go/amplitude"
 )
 
@@ -34,7 +32,7 @@ func Track(userID, eventType string, d *UserInputs, r *ReturnData) {
 		EventOptions:    amplitude.EventOptions{},
 	})
 
-	time.Sleep(10)
+	// time.Sleep(10)
 	// fixIdentifyPost(userID)
 
 }
