@@ -21,7 +21,7 @@
 	"2": {
 		"Name": "Google",
 		"Values": {
-			"1": "Customer Focus",
+			"1": "Customer Obsession",
 			"2": "Innovation",
 			"3": "Bold",
 			"4": "Collaboration",
@@ -82,7 +82,7 @@
 	"6": {
 		"Name": "Tesla",
 		"Values": {
-			"1": "Customer Focus",
+			"1": "Customer Obsession",
 			"2": "Sustainability",
 			"3": "Innovation",
 			"4": "Teamwork",
@@ -92,7 +92,7 @@
 			"8": "Constant Learning",
 			"9": "Risk Taking"
 		},
-		"CompanySize": 1234,
+		"CompanySize": 99290,
 		"RetentionRate": 68
 	},
 	"7": {
@@ -131,7 +131,7 @@
 	"9": {
 		"Name": "Snapchat",
 		"Values": {
-			"1": "Customer Focus",
+			"1": "Customer Obsession",
 			"2": "Innovation",
 			"3": "Passion",
 			"4": "Integrity",
