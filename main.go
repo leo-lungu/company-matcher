@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -90,55 +91,59 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 
 		for _, value := range userInputs.Motivations {
 			if company.Values[value] != nil {
-				score += 1
-				log.Println("Success: ", value, " ", company.Name, "Score: ", score)
+				continue
+				// log.Println("Success: ", value, " ", company.Name, "Score: ", score)
 			}
 		}
 
 		if userInputs.IdeasOrExpand == "Expand" {
 			if company.Values["Innovative"] == true {
 				score++
-				log.Println("innovative", company.Name, company.Values["Innovative"])
-				log.Println("score", score)
+				// log.Println("innovative", company.Name, company.Values["Innovative"])
+				// log.Println("score", score)
 			}
 		}
 
 		if userInputs.BigOrSmall == "Big" {
 			if company.CompanySize > 88000 {
-				log.Println("big", company.Name, company.CompanySize)
-				log.Println("score", score)
+				// log.Println("big", company.Name, company.CompanySize)
+				// log.Println("score", score)
 				score++
 			}
 		} else if userInputs.BigOrSmall == "Small" {
 			if company.CompanySize < 88000 {
-				log.Println("small", company.Name, company.CompanySize)
-				log.Println("score", score)
+				// log.Println("small", company.Name, company.CompanySize)
+				// log.Println("score", score)
 				score++
 			}
 		}
 
 		if userInputs.JobHopOrStay == "JobHop" {
 			if company.RetentionRate < 50 {
-				log.Println("jobhop", company.Name, company.RetentionRate)
-				log.Println("score", score)
+				// log.Println("jobhop", company.Name, company.RetentionRate)
+				// log.Println("score", score)
 				score++
 			}
 		} else if userInputs.JobHopOrStay == "Stay" {
 			if company.RetentionRate > 50 {
-				log.Println("stay", company.Name, company.RetentionRate)
-				log.Println("score", score)
+				// log.Println("stay", company.Name, company.RetentionRate)
+				// log.Println("score", score)
 				score++
 			}
 		}
 
 		for _, value := range userInputs.MostImportantValues {
 			if company.Values[value] == true {
-				log.Print("most important matched", value, "\n", company.Name, company.Values[value])
-				log.Println("score", score)
+				// log.Print("most important matched", value, "\n", company.Name, company.Values[value])
+				// log.Println("score", score)
 				score++
 				score++
 			}
+			bestScore = score
 		}
+
+		fmt.Println("------- score is -------", score)
+		fmt.Println("------- best score is -------", bestScore)
 
 		if score > bestScore {
 			log.Println("Previous best score", bestScore)
@@ -149,6 +154,21 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 	}
 
 	return bestCompany
+}
+
+func companyData() []Company {
+	jsonData := getData()
+	companies := []Company{}
+
+	for x := range jsonData {
+		companies = append(companies, Company{
+			Name:          jsonData[x].(map[string]interface{})["Name"].(string),
+			Values:        jsonData[x].(map[string]interface{})["Values"].(map[string]interface{}),
+			CompanySize:   jsonData[x].(map[string]interface{})["CompanySize"].(float64),
+			RetentionRate: jsonData[x].(map[string]interface{})["RetentionRate"].(float64),
+		})
+	}
+	return companies
 }
 
 func resultHandler(w http.ResponseWriter, r *http.Request) {
@@ -164,19 +184,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	location := r.FormValue("location")
 	jobTitle := r.FormValue("jobTitle")
 
-	data := getData()
-	// sym
-	companies := []Company{}
-
-	for x := range data {
-		companies = append(companies, Company{
-			Name:          data[x].(map[string]interface{})["Name"].(string),
-			Values:        data[x].(map[string]interface{})["Values"].(map[string]interface{}),
-			CompanySize:   data[x].(map[string]interface{})["CompanySize"].(float64),
-			RetentionRate: data[x].(map[string]interface{})["RetentionRate"].(float64),
-		})
-	}
-
 	d := UserInputs{
 		name,
 		email,
@@ -188,6 +195,7 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		location,
 		jobTitle,
 	}
+	companies := companyData()
 
 	companyTest := getBestSuitedCompany(companies, d)
 
