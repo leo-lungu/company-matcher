@@ -88,12 +88,13 @@ header table {
     text-align:right;
 }
 #navigation a {
-    color:inherit;
+    color: white;
     text-decoration:none;
     padding:5px 10px;
     border-bottom:2px solid transparent;
     margin-left:4vw;
     transition:0.2s ease-in-out;
+    text-align: center;
 }
 #navigation a:hover{
     border-bottom:2px solid #fff;
@@ -397,7 +398,7 @@ button:focus {
         padding:15px 0px;
     }
     #navigation a {
-        color:#000;
+        color:white;
     }
 }
 
@@ -406,3 +407,9 @@ button:focus {
     align-items: center;
     justify-content: center;
   }
+
+#table_top {
+    background-color:rgb(7,106,225);
+    margin: 0 !important;
+    width: 100% !important;
+}
