@@ -12,6 +12,42 @@ import (
 	"time"
 )
 
+var idTracker UserIDTracker
+
+type UserIDTracker struct {
+	ID int `json:"id"`
+}
+
+func (i *UserIDTracker) increment() int {
+	i.ID++
+	return i.ID
+}
+
+func (i *UserIDTracker) createIDString() string {
+	id := i.increment()
+	// print("this is id ----> ", id)
+	i.updateIDJSON()
+	return "user-" + strconv.Itoa(id)
+}
+
+func (i *UserIDTracker) updateIDJSON() {
+	marsh, err := json.Marshal(i)
+	handleErr(err)
+
+	_ = ioutil.WriteFile("id.json", marsh, 0644)
+}
+
+func loadIDJSON() UserIDTracker {
+	readFile, err := ioutil.ReadFile("id.json")
+	handleErr(err)
+
+	x := UserIDTracker{}
+	err = json.Unmarshal([]byte(readFile), &x)
+	handleErr(err)
+
+	return x
+}
+
 type Company struct {
 	Name          string
 	Values        map[string]interface{}
@@ -197,8 +233,10 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
 	id := strconv.Itoa(r1.Intn(100))
-	// print(id)
-	Track("user-"+id, "assessment", &d, &returnData)
+	print(id)
+	fmt.Println(idTracker.createIDString())
+	Track(idTracker.createIDString(), "collection", &d, &returnData)
+	// Track("user-"+id, "assessment", &d, &returnData)
 	// Track("user-2005", "assessment", &d, &returnData)
 
 	tmpl, err := template.ParseFiles("result.html")
@@ -211,6 +249,7 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	Amp()
+	idTracker = loadIDJSON()
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/result", resultHandler)
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./css"))))
