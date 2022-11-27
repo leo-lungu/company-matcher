@@ -158,18 +158,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	location := r.FormValue("location")
 	jobTitle := r.FormValue("jobTitle")
 
-	data := getData()
-	companies := []Company{}
-
-	for x := range data {
-		companies = append(companies, Company{
-			Name:          data[x].(map[string]interface{})["Name"].(string),
-			Values:        data[x].(map[string]interface{})["Values"].(map[string]interface{}),
-			CompanySize:   data[x].(map[string]interface{})["CompanySize"].(float64),
-			RetentionRate: data[x].(map[string]interface{})["RetentionRate"].(float64),
-		})
-	}
-
 	d := UserInputs{
 		name,
 		email,
