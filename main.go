@@ -52,7 +52,7 @@ type Company struct {
 	Values        map[string]interface{}
 	CompanySize   int
 	RetentionRate int
-	Image string
+	Image         string
 }
 
 type UserInputs struct {
@@ -187,7 +187,7 @@ func companyData() []Company {
 			Values:        jsonData[x].(map[string]interface{})["Values"].(map[string]interface{}),
 			CompanySize:   int(jsonData[x].(map[string]interface{})["CompanySize"].(float64)),
 			RetentionRate: int(jsonData[x].(map[string]interface{})["RetentionRate"].(float64)),
-			Image: jsonData[x].(map[string]interface{})["Image"].(string),
+			Image:         jsonData[x].(map[string]interface{})["Image"].(string),
 		})
 	}
 	return companies
@@ -233,8 +233,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		jobTitle,
 		companyTest,
 	}
-
-	print(companies)
 
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
