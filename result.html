@@ -32,17 +32,17 @@
 		<table id="top_part">
 			<tr>
 				<td id="about" class="animated slideInLeft" style="animation-delay:3.8s;">
-					<br><br><br>
+					<div style="padding-bottom: 30%;"></div>
 					<h1>Your Top Match: {{ .CompanyTest.Name }}</h1>
 					<br>
 					<p>Facts about the company:</h1>
 					<p>{{ .CompanyTest.Name }}'s values: </h1>
 					{{ range $values := .CompanyTest.Values }}
-						<ul>
+						<ul style="margin: 0; padding: 0;">
 							<li>{{$values}}</li>
 						</ul>
 					{{end}}
-					<p>Employee size: {{ .CompanyTest.CompanySize }}</p> </h1>
+					<p>Employee Size: {{ .CompanyTest.CompanySize }}</p> </h1>
 					<p></p>
 					<a href="https://uk.indeed.com/jobs?q=part-time+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}"><button href="https://uk.indeed.com/jobs?q=part-time+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}" class="btn_one"> {{ .JobTitle }} Part-Time Jobs in {{ .Location }} at {{ .CompanyTest.Name }}</button></a>
 					<a href="https://uk.indeed.com/jobs?q=full-time+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}"><button href="https://uk.indeed.com/jobs?q=full-time+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}" class="btn_one"> {{ .JobTitle }} Full-Time Jobs in {{ .Location }} at {{ .CompanyTest.Name }}</button></a>
