@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -53,6 +52,7 @@ type Company struct {
 	Values        map[string]interface{}
 	CompanySize   int
 	RetentionRate int
+	Image string
 }
 
 type UserInputs struct {
@@ -174,9 +174,6 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 		log.Println("Overall: ", company.Name, score)
 	}
 
-	fmt.Println("--------=-=-------?>>", bestScore)
-	fmt.Println("--------=-=-------?>>", bestCompany)
-
 	return bestCompany
 }
 
@@ -190,6 +187,7 @@ func companyData() []Company {
 			Values:        jsonData[x].(map[string]interface{})["Values"].(map[string]interface{}),
 			CompanySize:   int(jsonData[x].(map[string]interface{})["CompanySize"].(float64)),
 			RetentionRate: int(jsonData[x].(map[string]interface{})["RetentionRate"].(float64)),
+			Image: jsonData[x].(map[string]interface{})["Image"].(string),
 		})
 	}
 	return companies

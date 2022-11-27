@@ -16,7 +16,8 @@
 			"12": "Sustainability"
 		},
 		"CompanySize": 998000,
-		"RetentionRate": 82
+		"RetentionRate": 82,
+		"Image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png"
 	},
 	"2": {
 		"Name": "Google",
@@ -30,7 +31,8 @@
 			"7": "Integrity"
 		},
 		"CompanySize": 156500,
-		"RetentionRate": 81
+		"RetentionRate": 81,
+		"Image": "https://cdn.mos.cms.futurecdn.net/rjqJEKv6P9Yjy9d3KMGvp8.jpg"
 	},
 	"3": {
 		"Name": "Microsoft",
@@ -46,7 +48,8 @@
 			"9": "Accountability"
 		},
 		"CompanySize": 221000,
-		"RetentionRate": 76
+		"RetentionRate": 76,
+		"Image": "https://blogs.microsoft.com/wp-content/uploads/prod/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg"
 	},
 	"4": {
 		"Name": "Facebook",
@@ -59,7 +62,8 @@
 			"6": "Inclusion"
 		},
 		"CompanySize": 71970,
-		"RetentionRate": 69
+		"RetentionRate": 69,
+		"Image": "https://i2-prod.mirror.co.uk/incoming/article676858.ece/ALTERNATES/s1200/Topic%20-%20Facebook"
 	},
 	"5": {
 		"Name": "Apple",
@@ -77,7 +81,8 @@
 			"11": "Sustainability"
 		},
 		"CompanySize": 110000,
-		"RetentionRate": 53
+		"RetentionRate": 53,
+		"Image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
 	},
 	"6": {
 		"Name": "Tesla",
@@ -93,7 +98,8 @@
 			"9": "Risk Taking"
 		},
 		"CompanySize": 99290,
-		"RetentionRate": 68
+		"RetentionRate": 68,
+		"Image": "https://cdn.mos.cms.futurecdn.net/BQwukuZwwwXrg27B9Le2Q6.png"
 	},
 	"7": {
 		"Name": "Netflix",
@@ -111,7 +117,8 @@
 			"11": "Honesty"
 		},
 		"CompanySize": 11300,
-		"RetentionRate": 83
+		"RetentionRate": 83,
+		"Image": "https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=684&h=456"
 	},
 	"8": {
 		"Name": "Airbnb",
@@ -126,7 +133,8 @@
 			"8": "Adventure"
 		},
 		"CompanySize": 6132,
-		"RetentionRate": 73
+		"RetentionRate": 73,
+		"Image": "https://www.digital.ink/wp-content/uploads/airbnb_logo_detail.jpg"
 	},
 	"9": {
 		"Name": "Snapchat",
@@ -139,7 +147,8 @@
 			"6": "Vigor"
 		},
 		"CompanySize": 5661,
-		"RetentionRate": 75
+		"RetentionRate": 75,
+		"Image": "https://static.vecteezy.com/system/resources/previews/002/432/911/original/social-media-snapchat-original-latest-logo-free-vector.jpg"
 	},
 	"10": {
 		"Name": "Jane Street",
@@ -153,7 +162,8 @@
 			"7": "Collaboration"
 		},
 		"CompanySize": 1700,
-		"RetentionRate": 95
+		"RetentionRate": 95,
+		"Image": "https://janestreet.com/assets/logo_horizontal.png"
 	},
 	"11": {
 		"Name": "Tesco",
@@ -168,7 +178,8 @@
 			"8": "Integrity"
 		},
 		"CompanySize": 367321,
-		"RetentionRate": 71
+		"RetentionRate": 71,
+		"Image": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Tesco_Logo.svg/2560px-Tesco_Logo.svg.png"
 	},
 	"12": {
 		"Name": "Boots",
@@ -180,7 +191,8 @@
 			"5": "Curious"
 		},
 		"CompanySize": 56000,
-		"RetentionRate": 67
+		"RetentionRate": 67,
+		"Image": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Boots_logo.svg/1200px-Boots_logo.svg.png"
 	},
 	"13": {
 		"Name": "Amplitude",
@@ -193,6 +205,7 @@
 			"6": "Passion"
 		},
 		"CompanySize": 500,
-		"RetentionRate": 87
+		"RetentionRate": 87,
+		"Image": "https://upload.wikimedia.org/wikipedia/commons/0/02/Amplitude_logo.svg"
 	}
 }
