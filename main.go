@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"net/smtp"
 	"strconv"
 	"text/template"
 	"time"
@@ -52,7 +53,7 @@ type Company struct {
 	Values        map[string]interface{}
 	CompanySize   int
 	RetentionRate int
-	Image string
+	Image         string
 }
 
 type UserInputs struct {
@@ -187,7 +188,7 @@ func companyData() []Company {
 			Values:        jsonData[x].(map[string]interface{})["Values"].(map[string]interface{}),
 			CompanySize:   int(jsonData[x].(map[string]interface{})["CompanySize"].(float64)),
 			RetentionRate: int(jsonData[x].(map[string]interface{})["RetentionRate"].(float64)),
-			Image: jsonData[x].(map[string]interface{})["Image"].(string),
+			Image:         jsonData[x].(map[string]interface{})["Image"].(string),
 		})
 	}
 	return companies
@@ -251,6 +252,18 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl.Execute(w, returnData)
+
+	content := "Name: " + name
+
+	err = smtp.SendMail("smtp.gmail.com:587",
+		smtp.PlainAuth("", "email", "password", "smtp.gmail.com"),
+		"email",
+		[]string{"email"},
+		[]byte(content),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
