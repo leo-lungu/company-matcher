@@ -2,10 +2,14 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
+	"strconv"
 	"text/template"
+	"time"
 )
 
 type Company struct {
@@ -88,62 +92,64 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 		for _, value := range userInputs.Motivations {
 			if company.Values[value] != nil {
 				score += 1
-				log.Println("Success: ", value, " ", company.Name, "Score: ", score)
+				// log.Println("Success: ", value, " ", company.Name, "Score: ", score)
 			}
 		}
 
 		if userInputs.IdeasOrExpand == "Expand" {
 			if company.Values["Innovative"] == true {
 				score++
-				log.Println("innovative", company.Name, company.Values["Innovative"])
-				log.Println("score", score)
+				// log.Println("innovative", company.Name, company.Values["Innovative"])
+				// log.Println("score", score)
 			}
 		}
 
 		if userInputs.BigOrSmall == "Big" {
 			if company.CompanySize > 88000 {
-				log.Println("big", company.Name, company.CompanySize)
-				log.Println("score", score)
+				// log.Println("big", company.Name, company.CompanySize)
+				// log.Println("score", score)
 				score++
 			}
 		} else if userInputs.BigOrSmall == "Small" {
 			if company.CompanySize < 88000 {
-				log.Println("small", company.Name, company.CompanySize)
-				log.Println("score", score)
+				// log.Println("small", company.Name, company.CompanySize)
+				// log.Println("score", score)
 				score++
 			}
 		}
 
 		if userInputs.JobHopOrStay == "JobHop" {
 			if company.RetentionRate < 50 {
-				log.Println("jobhop", company.Name, company.RetentionRate)
-				log.Println("score", score)
+				// log.Println("jobhop", company.Name, company.RetentionRate)
+				// log.Println("score", score)
 				score++
 			}
 		} else if userInputs.JobHopOrStay == "Stay" {
 			if company.RetentionRate > 50 {
-				log.Println("stay", company.Name, company.RetentionRate)
-				log.Println("score", score)
+				// log.Println("stay", company.Name, company.RetentionRate)
+				// log.Println("score", score)
 				score++
 			}
 		}
 
 		for _, value := range userInputs.MostImportantValues {
 			if company.Values[value] == true {
-				log.Print("most important matched", value, "\n", company.Name, company.Values[value])
-				log.Println("score", score)
+				// log.Print("most important matched", value, "\n", company.Name, company.Values[value])
+				// log.Println("score", score)
 				score++
 				score++
 			}
 		}
 
 		if score > bestScore {
-			log.Println("Previous best score", bestScore)
-			log.Println("New best score", score)
+			// log.Println("Previous best score", bestScore)
+			// log.Println("New best score", score)
 			bestCompany = company
 			bestScore = score
 		}
 	}
+
+	fmt.Println("--------=-=-------?>>", bestScore)
 
 	return bestCompany
 }
@@ -186,11 +192,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		jobTitle,
 	}
 
-	Track("ok", "ok", map[string]interface{}{
-		"name":       "Checkout",
-		"a property": "a value",
-	})
-
 	companyTest := getBestSuitedCompany(companies, d)
 
 	returnData := ReturnData{
@@ -205,6 +206,18 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		jobTitle,
 		companyTest,
 	}
+
+	print(companies)
+
+	s1 := rand.NewSource(time.Now().UnixNano())
+	r1 := rand.New(s1)
+	id := strconv.Itoa(r1.Intn(100))
+	// print(id)
+	Track("user-"+id, "assessment", &d, &returnData)
+	// NEED TO CHANGE BELOW
+	// FIXES THE UI NOT UPDATING BY SENDING ANOTHER REQUEST TO THE USER
+	// NEED TO EITHER SPLIT THE IDENTIFY PART AND EVENT PART OR CALL THE METHOD TWICE
+	// Track("user-70", "assessment", &d, &returnData)
 
 	tmpl, err := template.ParseFiles("result.html")
 	if err != nil {
@@ -222,8 +235,5 @@ func main() {
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
 	log.Fatal(http.ListenAndServe(":8081", nil))
-<<<<<<< HEAD
 	//amp()
-=======
->>>>>>> a2125538709df0afd05bf5dbfda22ab742a5ef71
 }
