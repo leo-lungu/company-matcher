@@ -57,15 +57,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, r)
 }
 
-func resultsHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("results.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	tmpl.Execute(w, r)
-}
-
 func handleErr(err error) {
 	if err != nil {
 		log.Fatalln(err)
@@ -91,7 +82,7 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 
 		for _, value := range userInputs.Motivations {
 			if company.Values[value] != nil {
-				score += 1
+				score++
 			}
 		}
 
@@ -139,6 +130,21 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 	return bestCompany
 }
 
+func companyData() []Company {
+	jsonData := getData()
+	companies := []Company{}
+
+	for x := range jsonData {
+		companies = append(companies, Company{
+			Name:          jsonData[x].(map[string]interface{})["Name"].(string),
+			Values:        jsonData[x].(map[string]interface{})["Values"].(map[string]interface{}),
+			CompanySize:   jsonData[x].(map[string]interface{})["CompanySize"].(float64),
+			RetentionRate: jsonData[x].(map[string]interface{})["RetentionRate"].(float64),
+		})
+	}
+	return companies
+}
+
 func resultHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
@@ -175,6 +181,7 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		location,
 		jobTitle,
 	}
+	companies := companyData()
 
 	companyTest := getBestSuitedCompany(companies, d)
 
