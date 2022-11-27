@@ -17,12 +17,15 @@ var analytics amplitude.Client
 func Amp() {
 	config := amplitude.NewConfig("ac610d38b345c833f241e1dc353c3691")
 	config.FlushQueueSize = 200
+	config.FlushInterval = 1
 	x := amplitude.NewClient(config)
 
 	analytics = x
 }
 
 func Track(userID, eventType string, d *UserInputs, r *ReturnData) {
+
+	identify(userID, d, r)
 
 	analytics.Track(amplitude.Event{
 		UserID:          userID,
@@ -31,10 +34,13 @@ func Track(userID, eventType string, d *UserInputs, r *ReturnData) {
 		EventOptions:    amplitude.EventOptions{},
 	})
 
-	time.Sleep(1)
+	time.Sleep(10)
+	// fixIdentifyPost(userID)
 
-	identify(userID, d, r)
+}
 
+func fixIdentifyPost(userID string) {
+	analytics.Identify(amplitude.Identify{}, amplitude.EventOptions{UserID: userID})
 }
 
 func identify(userID string, d *UserInputs, r *ReturnData) {
