@@ -1,13 +1,11 @@
 package main
 
-// Import amplitude package
 import (
 	"github.com/amplitude/analytics-go/amplitude"
 )
 
 var analytics amplitude.Client
 
-// amp func
 func Amp() {
 	config := amplitude.NewConfig("ac610d38b345c833f241e1dc353c3691")
 	config.FlushQueueSize = 200
@@ -18,7 +16,6 @@ func Amp() {
 }
 
 func Track(userID, eventType string, d *UserInputs, r *ReturnData) {
-
 	identify(userID, d, r)
 
 	analytics.Track(amplitude.Event{
@@ -34,7 +31,6 @@ func identify(userID string, d *UserInputs, r *ReturnData) {
 
 	identifyObj := amplitude.Identify{}
 
-	// for UserInputs
 	identifyObj.Set("UserInputs-name", d.Name)
 	identifyObj.Set("UserInputs-email", d.Email)
 	identifyObj.Set("UserInputs-ideasOrExpand", d.IdeasOrExpand)
@@ -44,8 +40,6 @@ func identify(userID string, d *UserInputs, r *ReturnData) {
 	identifyObj.Set("UserInputs-mostImportantValues", d.MostImportantValues)
 	identifyObj.Set("UserInputs-location", d.Location)
 	identifyObj.Set("UserInputs-jobTitle", d.JobTitle)
-
-	// for resultant data
 	identifyObj.Set("Result-companyName", r.CompanyTest.Name)
 	identifyObj.Set("Result-values", r.CompanyTest.Values)
 	identifyObj.Set("Result-companySize", r.CompanyTest.CompanySize)

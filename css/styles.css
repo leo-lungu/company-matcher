@@ -1,7 +1,3 @@
-/*
-===========NAVBAR PROPERTIES===========
-*/
-
 .top {
     list-style-type: none;
     margin: 0;
@@ -26,20 +22,10 @@ hgroup {
     float: left;
 }
 
-
-
-/*
-login navbar
-*/
 .login-right {
     position: absolute;
     right: 0;
 }
-
-
-/*
-===========OVERALL BUTTONS PROPERTIES===========
-*/
 
 li {
     float: left;
@@ -74,10 +60,6 @@ ul {
     display:inline-block;
 }
 
-/*
-hover over
-*/
-
 input:hover, li a:hover {
     background-color: #ffffff;
 }
@@ -100,15 +82,14 @@ html {
     padding-bottom: 25%;
    } 
 
-
    .track img {
     width: 100%;
   }
   
   .track .play {
     position: absolute;
-    top: calc((85% / 2) - (22px / 2)); /* Half image height minus half button height */
-    left: calc((100% / 2) - (50% / 2)); /* Half image width minus half button width */
+    top: calc((85% / 2) - (22px / 2));
+    left: calc((100% / 2) - (50% / 2));
   }
 
 .companyscroll {

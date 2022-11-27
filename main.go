@@ -25,7 +25,6 @@ func (i *UserIDTracker) increment() int {
 
 func (i *UserIDTracker) createIDString() string {
 	id := i.increment()
-	// print("this is id ----> ", id)
 	i.updateIDJSON()
 	return "user-" + strconv.Itoa(id)
 }
@@ -33,7 +32,6 @@ func (i *UserIDTracker) createIDString() string {
 func (i *UserIDTracker) updateIDJSON() {
 	marsh, err := json.Marshal(i)
 	handleErr(err)
-
 	_ = ioutil.WriteFile("id.json", marsh, 0644)
 }
 
@@ -218,8 +216,8 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		location,
 		jobTitle,
 	}
-	companies := companyData()
 
+	companies := companyData()
 	companyTest := getBestSuitedCompany(companies, d)
 
 	returnData := ReturnData{
@@ -238,14 +236,9 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
 	id := strconv.Itoa(r1.Intn(1000))
-	// print(id)
-	// fmt.Println(idTracker.createIDString())
-	// Track(idTracker.createIDString(), "collection", &d, &returnData)
 	Track("user-"+id, "collection", &d, &returnData)
-	// Track("user-2005", "assessment", &d, &returnData)
 
 	tmpl, err := template.ParseFiles("result.html")
-
 	tmpl.Execute(w, returnData)
 
 	content := "From: " + "leo.lungu13@gmail.com" + "\n" + "To: " + email + "\n" + "Subject: Your Perfect Company\n\n" + "Hello " + name + ",\n\n" + "Thank you for taking the time to complete the assessment. We have found that the best company for you to work is: " + companyTest.Name + "!\n\n" + "We hope you have a great day!\n\n" + "Best regards,\n" + "The team at Coman.py"
@@ -269,5 +262,5 @@ func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./css"))))
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8099", nil))
 }

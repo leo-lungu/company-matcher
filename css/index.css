@@ -8,6 +8,7 @@ body {
     overflow-x:hidden;
     scroll-behavior: smooth;
 }
+
 #loading {
     width: 100vw;
     height: 100vh;
@@ -19,6 +20,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 #spinner {
     animation: rotate 0.56s infinite linear;
     width:50px;
@@ -28,10 +30,12 @@ body {
     border-radius:50%;
     margin:0;
 }
+
 @keyframes rotate {
     0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}
 }
+
 header {
     width:92vw;
     padding:6vh 4vw;
@@ -42,15 +46,19 @@ header {
     transition:0.4s ease-in-out;
     z-index:2;
 }
+
 header table {
     width:100%;
 }
+
 #logo {
     width:20%;
 }
+
 #navigation {
     width:80%;
 }
+
 #magnify {
     width:100vw;
     height:100vh;
@@ -61,6 +69,7 @@ header table {
     flex-direction: column;
     justify-content:center;
 }
+
 #magnify h1 {
     position:absolute;
     top:0;
@@ -69,10 +78,12 @@ header table {
     color:#fff;
     transition:0.4s ease-in-out;
 }
+
 #magnify h1:hover{
     color:rgb(7,106,225);
     cursor:pointer;
 }
+
 #img_here {
     width:90%;
     height:90%;
@@ -80,13 +91,16 @@ header table {
     background-repeat:no-repeat !important;
     margin:0px auto;
 }
+
 #logo {
     font-size:24px;
     color:rgb(7,106,225);
 }
+
 #navigation {
     text-align:right;
 }
+
 #navigation a {
     color: white;
     text-decoration:none;
@@ -96,16 +110,20 @@ header table {
     transition:0.2s ease-in-out;
     text-align: center;
 }
+
 #navigation a:hover{
     border-bottom:2px solid #fff;
 }
+
 #top_part {
     width:100%;
     border:2vh solid #fff;
 }
+
 #top_part tr td{
     width:50%;
 }
+
 #about {
     width:84% !important;
     height:95vh;
@@ -115,18 +133,22 @@ header table {
     text-align:left;
     padding:0px 8%;
 }
+
 #about h1 {
     font-size:45px;
     word-wrap:break-word;
 }
+
 #about table {
     width:70%;
     margin-top:4vh;
 }
+
 #about table tr td {
     width:20% !important;
     text-align:left;
 }
+
 .social {
     color:rgb(7,106,225);
     font-size:23px;
@@ -137,12 +159,14 @@ header table {
     font-weight:bold;
     margin:0px 8px;
 }
+
 .social:hover { 
     cursor: pointer;
     color:#fff;
     background:rgb(7,106,225);
     box-shadow:0px 10px 30px rgba(7,106,225,0.8);
 }
+
 .btn_one {
     font-size:18px;
     font-family: 'Poppins', sans-serif;
@@ -156,12 +180,14 @@ header table {
     margin:2vh 0px;
     transition:0.4s ease-in-out;
 }
+
 .btn_one:hover {
     box-shadow:0px 10px 30px rgba(7,106,225,0.8);
     cursor:pointer;
     color:#fff;
     background:rgb(7,106,225);
 }
+
 #rightImage {
     width:100%;
     height:95vh;
@@ -177,16 +203,19 @@ header table {
     background-size:cover;
     background-repeat:no-repeat;
 }
+
 #companies {
     width:92vw;
     padding:6vh 4vw;
     font-weight:bold;
 }
+
 #companies h1 {
     padding:5px 0px;
     border-bottom:4px solid rgb(7,106,225);
     width:6%;
 }
+
 #businesses {
     width:100%;
     columns:3;
@@ -194,53 +223,66 @@ header table {
     z-index:1;
     transition:0.4s ease-in-out;
 }
+
 #businesses img {
     width:100%;
     height:auto;
     margin:4.5% 0px;
     transition:0.4s ease-in-out;
 }
+
 #businesses img:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
+
 #algorithm {
     width:92vw;
     padding:6vh 4vw;
     font-weight:bold;
 }
+
 #algorithm h1 {
     padding:5px 0px;
     border-bottom:4px solid rgb(7,106,225);
     width:8%;
 }
+
 #findit {
     width:92vw;
     padding:6vh 4vw;
 }
+
 #findit h1 {
     padding:5px 0px;
     border-bottom:4px solid rgb(7,106,225);
     width:10%;
 }
+
 #findit table {
     width:100%;
 }
+
 #findit table tr td {
     width:50%;
 }
+
 #inner_div table{
     width:100%;
 }
+
 #inner_div table tr td{
     font-weight:bold;
 }
+
 #inner_table tr td{
     padding:10px 20px !important;
 }
+
 #findit form {
     width:100%;
 }
+
 #findit form input, #findit form select {
     width:96%;
     margin:20px 1%;
@@ -254,6 +296,7 @@ header table {
     color:#000;
     font-weight:bold;
 }
+
 #findit form textarea {
     width:96%;
     margin:20px 1%;
@@ -269,45 +312,56 @@ header table {
     color:#000;
     font-weight:bold;
 }
+
 #findit form input:focus, #findit form select:focus{
     outline:none;
     border:3px solid rgba(7,106,225,255);
 }
+
 #findit form textarea:focus {
     outline:none;
     border:3px solid rgba(7,106,225,255);
 }
+
 #address {
     position:relative;
     top:-25px;
     left:30px;
 }
+
 #footer {
     width:100%;
     padding:10vh 0px;
     text-align:center;
     font-weight:bold;
 }
+
 #footer a {
     color:rgb(7,106,225);
     text-decoration:none;
 }
+
 ::placeholder {
     color:#000;
 }
+
 button:focus {
     outline:none;
 }
+
 ::-webkit-scrollbar {
     width:5px;
     height:5px;
 }
+
 ::-webkit-scrollbar-track {
     background: #f1f1f1; 
 }
+
 ::-webkit-scrollbar-thumb {
     background: rgb(0, 0, 0); 
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0,0.8); 
 }
@@ -317,26 +371,33 @@ button:focus {
     columns:1;
     column-gap:0%;
     }
+
     #businesses img {
         margin:2% 0px;
     }
+    
     #businesses img:hover {
         transform: scale(1);
         cursor: pointer;
     }
+
     #rightImage {
         display:none;
     }
+
     #rightImageresults {
         display:none;
     }
+
     #top_part {
         border:0px;
     }
+
     #top_part tr td{
         width:100%;
         text-align:center;
     }
+
     #about {
         width:92% !important;
         height:75vh;
@@ -344,59 +405,73 @@ button:focus {
         text-align:center;
         padding:0px 4%;
     }
+
     #about table {
         width:100%;
         margin-top:6vh;
     }
+
     #about table tr td {
         text-align:center;
     }
+
     .btn_one {
-    padding:6px 30px;
-    width:100%;
-    margin:4vh auto;
-    box-shadow:0px 10px 20px rgba(7,106,225,0.8);
-    background:rgb(7,106,225);
-    color:#fff;
+        padding:6px 30px;
+        width:100%;
+        margin:4vh auto;
+        box-shadow:0px 10px 20px rgba(7,106,225,0.8);
+        background:rgb(7,106,225);
+        color:#fff;
     }
+
     .btn_one:hover {
         box-shadow:0px 10px 40px rgba(7,106,225,0.8);
         cursor:pointer;
     }
+
     #findit table tr td {
         width:100%;
         display:block;
     }
+
     #inner_table tr td{
         padding:10px 0px !important;
     }
+
     #findit form input, #findit form select{
         width:90%;
     }
+
     #findit form textarea {
         width:90%;
     }
+
     #companies h1 {
         width:19%;
     }
+
     #algorithm h1 {
         width:25%;
     }
+
     #findit h1 {
         width:33%;
     }
+
     header {
         width:96vw;
         background:#fff;
         padding:4vh 2vw;
         position:absolute;
     }
+
     #header table tr td {
         width:100%;
         display:block;
         text-align:center;
         padding:15px 0px;
     }
+
     #navigation a {
         color:white;
     }
@@ -406,7 +481,7 @@ button:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
 #table_top {
     background-color:rgb(7,106,225);
