@@ -15,8 +15,8 @@ import (
 type Company struct {
 	Name          string
 	Values        map[string]interface{}
-	CompanySize   float64
-	RetentionRate float64
+	CompanySize   int
+	RetentionRate int
 }
 
 type UserInputs struct {
@@ -138,8 +138,8 @@ func companyData() []Company {
 		companies = append(companies, Company{
 			Name:          jsonData[x].(map[string]interface{})["Name"].(string),
 			Values:        jsonData[x].(map[string]interface{})["Values"].(map[string]interface{}),
-			CompanySize:   jsonData[x].(map[string]interface{})["CompanySize"].(float64),
-			RetentionRate: jsonData[x].(map[string]interface{})["RetentionRate"].(float64),
+			CompanySize:   int(jsonData[x].(map[string]interface{})["CompanySize"].(float64)),
+			RetentionRate: int(jsonData[x].(map[string]interface{})["RetentionRate"].(float64)),
 		})
 	}
 	return companies
