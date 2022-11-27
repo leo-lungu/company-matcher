@@ -240,11 +240,11 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
-	id := strconv.Itoa(r1.Intn(100))
-	print(id)
-	fmt.Println(idTracker.createIDString())
-	Track(idTracker.createIDString(), "collection", &d, &returnData)
-	// Track("user-"+id, "assessment", &d, &returnData)
+	id := strconv.Itoa(r1.Intn(1000))
+	// print(id)
+	// fmt.Println(idTracker.createIDString())
+	// Track(idTracker.createIDString(), "collection", &d, &returnData)
+	Track("user-"+id, "collection", &d, &returnData)
 	// Track("user-2005", "assessment", &d, &returnData)
 
 	tmpl, err := template.ParseFiles("result.html")
