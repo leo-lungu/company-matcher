@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"net/smtp"
 	"strconv"
 	"text/template"
 	"time"
@@ -249,6 +250,18 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl.Execute(w, returnData)
+
+	content := "Name: " + name
+
+	err = smtp.SendMail("smtp.gmail.com:587",
+		smtp.PlainAuth("", "email", "password", "smtp.gmail.com"),
+		"email",
+		[]string{"email"},
+		[]byte(content),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
@@ -259,5 +272,5 @@ func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./css"))))
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }

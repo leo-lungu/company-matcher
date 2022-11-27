@@ -31,24 +31,28 @@
 			<table id="top_part">
 				<tr>
 					<td id="about" class="animated slideInLeft" style="animation-delay:3.8s;">
-						<div style="padding-bottom: 5%"></div>
-						<h1>Your Top Match: {{ .CompanyTest.Name }}</h1>
-						<p>Facts about the company:</h1>
-						<p>{{ .CompanyTest.Name }}'s values: </h1>
+						<div style="margin-top: 2em">
+						<h1>Your top match is {{ .CompanyTest.Name }}!</h1>
+						<img src="{{ .CompanyTest.Image }}" style="width: 150px; object-fit:contain">
+						<p>Good job! You matched with {{ .CompanyTest.Name }}. Now, what exactly does this mean? Well, firstly, their values are</p>
 						{{ range $values := .CompanyTest.Values }}
 							<ul style="padding: 0; margin: 0;">
 								<li>{{$values}}</li>
 							</ul>
 						{{end}}
-						<p>Employee size: {{ .CompanyTest.CompanySize }}</p> </h1>
+						<p>Want to know their size? They have over {{ .CompanyTest.CompanySize }} employees, and you could soon be one of them! Click the buttons below in order to be redirected to a job board which includes all the data about you, and filtering jobs just for you!</p> 
 						<p></p>
 						<a href="https://uk.indeed.com/jobs?q=part-time+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}"><button href="https://uk.indeed.com/jobs?q=part-time+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}" class="btn_one"> {{ .JobTitle }} Part-Time Jobs in {{ .Location }} at {{ .CompanyTest.Name }}</button></a>
 						<a href="https://uk.indeed.com/jobs?q=full-time+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}"><button href="https://uk.indeed.com/jobs?q=full-time+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}" class="btn_one"> {{ .JobTitle }} Full-Time Jobs in {{ .Location }} at {{ .CompanyTest.Name }}</button></a>
-						<a href="https://uk.indeed.com/jobs?q=internship+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}"><button href="https://uk.indeed.com/jobs?q=internship+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}" class="btn_one"> {{ .JobTitle }} Internship in {{ .Location }} at {{ .CompanyTest.Name }}</button></a>
+						<a href="https://uk.indeed.com/jobs?q=internship+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}"><button href="https://uk.indeed.com/jobs?q=internship+{{ .JobTitle }}+{{ .CompanyTest.Name }}&l={{ .Location }}" class="btn_one"> {{ .JobTitle }} Internships in {{ .Location }} at {{ .CompanyTest.Name }}</button></a>
+						</div>
 					</td>
 					<td id="rightImageresults" class="animated jackInTheBox" style="animation-delay:2.2s;"></td>
 				</tr>
 			</table>
+		</div>
+		<div id="footer">
+			A coman.py product<br>Company Matcher</a>
 		</div>
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
