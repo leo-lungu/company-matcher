@@ -101,6 +101,8 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 				score++
 				// log.Println("innovative", company.Name, company.Values["Innovative"])
 				// log.Println("score", score)
+				// log.Println("innovative", company.Name, company.Values["Innovative"])
+				// log.Println("score", score)
 			}
 		}
 
@@ -108,10 +110,14 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 			if company.CompanySize > 88000 {
 				// log.Println("big", company.Name, company.CompanySize)
 				// log.Println("score", score)
+				// log.Println("big", company.Name, company.CompanySize)
+				// log.Println("score", score)
 				score++
 			}
 		} else if userInputs.BigOrSmall == "Small" {
 			if company.CompanySize < 88000 {
+				// log.Println("small", company.Name, company.CompanySize)
+				// log.Println("score", score)
 				// log.Println("small", company.Name, company.CompanySize)
 				// log.Println("score", score)
 				score++
@@ -122,10 +128,14 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 			if company.RetentionRate < 50 {
 				// log.Println("jobhop", company.Name, company.RetentionRate)
 				// log.Println("score", score)
+				// log.Println("jobhop", company.Name, company.RetentionRate)
+				// log.Println("score", score)
 				score++
 			}
 		} else if userInputs.JobHopOrStay == "Stay" {
 			if company.RetentionRate > 50 {
+				// log.Println("stay", company.Name, company.RetentionRate)
+				// log.Println("score", score)
 				// log.Println("stay", company.Name, company.RetentionRate)
 				// log.Println("score", score)
 				score++
@@ -134,6 +144,8 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 
 		for _, value := range userInputs.MostImportantValues {
 			if company.Values[value] == true {
+				// log.Print("most important matched", value, "\n", company.Name, company.Values[value])
+				// log.Println("score", score)
 				// log.Print("most important matched", value, "\n", company.Name, company.Values[value])
 				// log.Println("score", score)
 				score++
@@ -146,12 +158,14 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 		fmt.Println("------- best score is -------", bestScore)
 
 		if score > bestScore {
-			log.Println("Previous best score", bestScore)
-			log.Println("New best score", score)
+			// log.Println("Previous best score", bestScore)
+			// log.Println("New best score", score)
 			bestCompany = company
 			bestScore = score
 		}
 	}
+
+	fmt.Println("--------=-=-------?>>", bestScore)
 
 	return bestCompany
 }
@@ -212,15 +226,17 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 		companyTest,
 	}
 
+	print(companies)
+
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
 	id := strconv.Itoa(r1.Intn(100))
-	print(id)
-	// Track("user-"+id, "assessment", &d, &returnData)
+	// print(id)
+	Track("user-"+id, "assessment", &d, &returnData)
 	// NEED TO CHANGE BELOW
 	// FIXES THE UI NOT UPDATING BY SENDING ANOTHER REQUEST TO THE USER
 	// NEED TO EITHER SPLIT THE IDENTIFY PART AND EVENT PART OR CALL THE METHOD TWICE
-	Track("user-70", "assessment", &d, &returnData)
+	// Track("user-70", "assessment", &d, &returnData)
 
 	tmpl, err := template.ParseFiles("result.html")
 	if err != nil {
