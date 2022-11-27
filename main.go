@@ -83,6 +83,7 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 		for _, value := range userInputs.Motivations {
 			for _, companyValue := range company.Values {
 				if value == companyValue {
+					log.Println(company, companyValue, value, "Matched")
 					score++
 					score++
 					score++
@@ -93,6 +94,7 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 		if userInputs.IdeasOrExpand == "Ideas" {
 			for _, companyValue := range company.Values {
 				if companyValue == "Innovative" {
+					log.Println(company, "innovative", "Matched")
 					score++
 					score++
 				}
@@ -101,21 +103,25 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 
 		if userInputs.BigOrSmall == "Big" {
 			if company.CompanySize >= 80000 {
+				log.Println(company, "Big", "Matched")
 				score++
 			}
 		} else {
 			if company.CompanySize < 80000 {
+				log.Println(company, "Small", "Matched")
 				score++
 			}
 		}
 
 		if userInputs.JobHopOrStay == "Stay" {
 			if company.RetentionRate >= 75 {
+				log.Println(company, "Stay", "Matched")
 				score++
 				score++
 			}
 		} else {
 			if company.RetentionRate < 75 {
+				log.Println(company, "Hop", "Matched")
 				score++
 			}
 		}
@@ -124,7 +130,7 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 			for _, companyValue := range company.Values {
 				log.Println(companyValue, value)
 				if value == companyValue {
-					log.Println("\tMatched!")
+					log.Println(company, companyValue, value, "Matched")
 					score++
 					score++
 					score++
@@ -137,7 +143,7 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 			bestCompany = company
 		}
 
-		log.Println(company.Name, score)
+		log.Println("Overall: ", company.Name, score)
 	}
 
 	fmt.Println("--------=-=-------?>>", bestScore)
