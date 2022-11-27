@@ -5,10 +5,6 @@ import (
 	"github.com/amplitude/analytics-go/amplitude"
 )
 
-type c struct {
-	Name string
-}
-
 var analytics amplitude.Client
 
 // amp func
@@ -32,13 +28,6 @@ func Track(userID, eventType string, d *UserInputs, r *ReturnData) {
 		EventOptions:    amplitude.EventOptions{},
 	})
 
-	// time.Sleep(10)
-	// fixIdentifyPost(userID)
-
-}
-
-func fixIdentifyPost(userID string) {
-	analytics.Identify(amplitude.Identify{}, amplitude.EventOptions{UserID: userID})
 }
 
 func identify(userID string, d *UserInputs, r *ReturnData) {
@@ -63,11 +52,4 @@ func identify(userID string, d *UserInputs, r *ReturnData) {
 	identifyObj.Set("Result-retentionRate", r.CompanyTest.RetentionRate)
 
 	analytics.Identify(identifyObj, amplitude.EventOptions{UserID: userID})
-}
-
-func Trial() {
-	cc := []c{}
-	cc = append(cc, c{
-		Name: "asdas",
-	})
 }
