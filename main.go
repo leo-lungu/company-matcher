@@ -57,15 +57,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, r)
 }
 
-func resultsHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("results.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	tmpl.Execute(w, r)
-}
-
 func handleErr(err error) {
 	if err != nil {
 		log.Fatalln(err)
@@ -151,11 +142,7 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 				score++
 				score++
 			}
-			bestScore = score
 		}
-
-		fmt.Println("------- score is -------", score)
-		fmt.Println("------- best score is -------", bestScore)
 
 		if score > bestScore {
 			// log.Println("Previous best score", bestScore)
