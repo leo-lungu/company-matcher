@@ -253,16 +253,16 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 
 	tmpl.Execute(w, returnData)
 
-	content := "Name: " + name
+	content := "From: " + "leo.lungu13@gmail.com" + "\n" + "To: " + email + "\n" + "Subject: Your Perfect Company\n\n" + "Hello " + name + ",\n\n" + "Thank you for taking the time to complete the assessment. We have found that the best company for you to work is: " + companyTest.Name + "!\n\n" + "We hope you have a great day!\n\n" + "Best regards,\n" + "The team at Coman.py"
 
 	err = smtp.SendMail("smtp.gmail.com:587",
-		smtp.PlainAuth("", "email", "password", "smtp.gmail.com"),
-		"email",
-		[]string{"email"},
-		[]byte(content),
-	)
+		smtp.PlainAuth("", "leo.lungu13@gmail.com", "qebrqfgwpjntyceb", "smtp.gmail.com"),
+		"leo.lungu13@gmail.com",
+		[]string{email},
+		[]byte(content))
 	if err != nil {
 		log.Fatal(err)
+		return
 	}
 }
 
