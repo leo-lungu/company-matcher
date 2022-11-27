@@ -246,21 +246,29 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	Track("user-"+id, "collection", &d, &returnData)
 	// Track("user-2005", "assessment", &d, &returnData)
 
-	tmpl, err := template.ParseFiles("result.html")
+
+
+
+
+	from := "companymatcherbycomanpygmail.com"
+	pass := "comanpy123"
+	to := email
+
+	msg := "From: " + from + "\n" +
+		"To: " + to + "\n" +
+		"Subject: Hello there\n\n" +
+		"hi"
+
+	err := smtp.SendMail("smtp.gmail.com:587",
+		smtp.PlainAuth("", from, pass, "smtp.gmail.com"),
+		from, []string{to}, []byte(msg))
+
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("smtp error: %s", err)
+		return
 	}
-
-	tmpl.Execute(w, returnData)
-
-	content := "Name: " + name
-
-	err = smtp.SendMail("smtp.gmail.com:587",
-		smtp.PlainAuth("", "email", "password", "smtp.gmail.com"),
-		"email",
-		[]string{"email"},
-		[]byte(content),
-	)
+	
+	log.Print("sent, visit http://foobarbazz.mailinator.com")
 	if err != nil {
 		log.Fatal(err)
 	}
