@@ -15,8 +15,8 @@ import (
 type Company struct {
 	Name          string
 	Values        map[string]interface{}
-	CompanySize   float64
-	RetentionRate float64
+	CompanySize   int
+	RetentionRate int
 }
 
 type UserInputs struct {
@@ -81,47 +81,53 @@ func getBestSuitedCompany(companies []Company, userInputs UserInputs) (bestCompa
 		score := 0
 
 		for _, value := range userInputs.Motivations {
-			if company.Values[value] != nil {
-				score++
+			for _, companyValue := range company.Values {
+				if value == companyValue {
+					score++
+				}
 			}
 		}
 
-		if userInputs.IdeasOrExpand == "Expand" {
-			if company.Values["Innovative"] == true {
-				score++
+		if userInputs.IdeasOrExpand == "Ideas" {
+			for _, companyValue := range company.Values {
+				if companyValue == "Innovative" {
+					score++
+				}
 			}
 		}
 
 		if userInputs.BigOrSmall == "Big" {
-			if company.CompanySize > 88000 {
+			if company.CompanySize >= 80000 {
 				score++
 			}
-		} else if userInputs.BigOrSmall == "Small" {
-			if company.CompanySize < 88000 {
+		} else {
+			if company.CompanySize < 80000 {
+				score++
 				score++
 			}
 		}
 
-		if userInputs.JobHopOrStay == "JobHop" {
-			if company.RetentionRate < 50 {
+		if userInputs.JobHopOrStay == "Stay" {
+			if company.RetentionRate >= 75 {
 				score++
 			}
-		} else if userInputs.JobHopOrStay == "Stay" {
-			if company.RetentionRate > 50 {
+		} else {
+			if company.RetentionRate < 75 {
 				score++
 			}
 		}
 
 		for _, value := range userInputs.MostImportantValues {
-			if company.Values[value] == true {
-				score++
-				score++
+			for _, companyValue := range company.Values {
+				if value == companyValue {
+					score++
+				}
 			}
 		}
 
 		if score > bestScore {
-			bestCompany = company
 			bestScore = score
+			bestCompany = company
 		}
 	}
 
@@ -138,8 +144,8 @@ func companyData() []Company {
 		companies = append(companies, Company{
 			Name:          jsonData[x].(map[string]interface{})["Name"].(string),
 			Values:        jsonData[x].(map[string]interface{})["Values"].(map[string]interface{}),
-			CompanySize:   jsonData[x].(map[string]interface{})["CompanySize"].(float64),
-			RetentionRate: jsonData[x].(map[string]interface{})["RetentionRate"].(float64),
+			CompanySize:   int(jsonData[x].(map[string]interface{})["CompanySize"].(float64)),
+			RetentionRate: int(jsonData[x].(map[string]interface{})["RetentionRate"].(float64)),
 		})
 	}
 	return companies
