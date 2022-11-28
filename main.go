@@ -67,21 +67,8 @@ type UserInputs struct {
 }
 
 type ReturnData struct {
-	Name                string
-	Email               string
-	Motivations         []string
-	IdeasOrExpand       string
-	BigOrSmall          string
-	JobHopOrStay        string
-	MostImportantValues []string
-	Location            string
-	JobTitle            string
-	CompanyTest         Company
+	CompanyTest Company
 }
-
-const (
-	integrity = iota
-)
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("index.html")
@@ -193,6 +180,9 @@ func companyData() []Company {
 }
 
 func resultHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("result.html")
+	handleErr(err)
+
 	r.ParseForm()
 
 	name := r.FormValue("name")
@@ -221,15 +211,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	companyTest := getBestSuitedCompany(companies, d)
 
 	returnData := ReturnData{
-		name,
-		email,
-		motivations,
-		ideasOrExpand,
-		bigOrSmall,
-		jobHopOrStay,
-		mostImportantValues,
-		location,
-		jobTitle,
 		companyTest,
 	}
 
@@ -238,7 +219,6 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	id := strconv.Itoa(r1.Intn(1000))
 	Track("user-"+id, "collection", &d, &returnData)
 
-	tmpl, err := template.ParseFiles("result.html")
 	tmpl.Execute(w, returnData)
 
 	content := "From: " + "leo.lungu13@gmail.com" + "\n" + "To: " + email + "\n" + "Subject: Your Perfect Company\n\n" + "Hello " + name + ",\n\n" + "Thank you for taking the time to complete the assessment. We have found that the best company for you to work is: " + companyTest.Name + "!\n\n" + "We hope you have a great day!\n\n" + "Best regards,\n" + "The team at Coman.py"
