@@ -67,7 +67,7 @@ type UserInputs struct {
 }
 
 type ReturnData struct {
-	CompanyTest Company
+	CompanyData Company
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -208,10 +208,10 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	companies := companyData()
-	companyTest := getBestSuitedCompany(companies, d)
+	company := getBestSuitedCompany(companies, d)
 
 	returnData := ReturnData{
-		companyTest,
+		company,
 	}
 
 	s1 := rand.NewSource(time.Now().UnixNano())
