@@ -40,10 +40,10 @@ func identify(userID string, d *UserInputs, r *ReturnData) {
 	identifyObj.Set("UserInputs-mostImportantValues", d.MostImportantValues)
 	identifyObj.Set("UserInputs-location", d.Location)
 	identifyObj.Set("UserInputs-jobTitle", d.JobTitle)
-	identifyObj.Set("Result-companyName", r.CompanyTest.Name)
-	identifyObj.Set("Result-values", r.CompanyTest.Values)
-	identifyObj.Set("Result-companySize", r.CompanyTest.CompanySize)
-	identifyObj.Set("Result-retentionRate", r.CompanyTest.RetentionRate)
+	identifyObj.Set("Result-companyName", r.CompanyData.Name)
+	identifyObj.Set("Result-values", r.CompanyData.Values)
+	identifyObj.Set("Result-companySize", r.CompanyData.CompanySize)
+	identifyObj.Set("Result-retentionRate", r.CompanyData.RetentionRate)
 
 	analytics.Identify(identifyObj, amplitude.EventOptions{UserID: userID})
 }

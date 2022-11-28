@@ -12,11 +12,41 @@ import (
 	"time"
 )
 
-var idTracker UserIDTracker
+type Company struct {
+	Name          string
+	Values        map[string]interface{}
+	CompanySize   int
+	RetentionRate int
+	Image         string
+}
+
+type UserInputs struct {
+	Name                string
+	Email               string
+	Motivations         []string
+	IdeasOrExpand       string
+	BigOrSmall          string
+	JobHopOrStay        string
+	MostImportantValues []string
+	Location            string
+	JobTitle            string
+}
+
+type ReturnData struct {
+	CompanyData Company
+}
 
 type UserIDTracker struct {
 	ID int `json:"id"`
 }
+
+func handleErr(err error) {
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+
+var idTracker UserIDTracker
 
 func (i *UserIDTracker) increment() int {
 	i.ID++
@@ -44,45 +74,6 @@ func loadIDJSON() UserIDTracker {
 	handleErr(err)
 
 	return x
-}
-
-type Company struct {
-	Name          string
-	Values        map[string]interface{}
-	CompanySize   int
-	RetentionRate int
-	Image         string
-}
-
-type UserInputs struct {
-	Name                string
-	Email               string
-	Motivations         []string
-	IdeasOrExpand       string
-	BigOrSmall          string
-	JobHopOrStay        string
-	MostImportantValues []string
-	Location            string
-	JobTitle            string
-}
-
-type ReturnData struct {
-	CompanyData Company
-}
-
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("index.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	tmpl.Execute(w, r)
-}
-
-func handleErr(err error) {
-	if err != nil {
-		log.Fatalln(err)
-	}
 }
 
 func getData() (data map[string]interface{}) {
@@ -179,6 +170,15 @@ func companyData() []Company {
 	return companies
 }
 
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("index.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tmpl.Execute(w, r)
+}
+
 func resultHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("result.html")
 	handleErr(err)
@@ -221,7 +221,7 @@ func resultHandler(w http.ResponseWriter, r *http.Request) {
 
 	tmpl.Execute(w, returnData)
 
-	content := "From: " + "leo.lungu13@gmail.com" + "\n" + "To: " + email + "\n" + "Subject: Your Perfect Company\n\n" + "Hello " + name + ",\n\n" + "Thank you for taking the time to complete the assessment. We have found that the best company for you to work is: " + companyTest.Name + "!\n\n" + "We hope you have a great day!\n\n" + "Best regards,\n" + "The team at Coman.py"
+	content := "From: " + "leo.lungu13@gmail.com" + "\n" + "To: " + email + "\n" + "Subject: Your Perfect Company\n\n" + "Hello " + name + ",\n\n" + "Thank you for taking the time to complete the assessment. We have found that the best company for you to work is: " + company.Name + "!\n\n" + "We hope you have a great day!\n\n" + "Best regards,\n" + "The team at Coman.py"
 
 	err = smtp.SendMail("smtp.gmail.com:587",
 		smtp.PlainAuth("", "leo.lungu13@gmail.com", "qebrqfgwpjntyceb", "smtp.gmail.com"),
